@@ -1,18 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f8f9fa;
-  color: #333;
+    background-color: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.6;
 }
 
-header {
-  margin-bottom: 40px;
+/* NAVBAR */
+nav {
+    background: #020617;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-h1 {
-  font-size: 2.5em;
+.nav-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-section {
-  margin-bottom: 30px;
+.logo {
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #020617, #0f172a);
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    color: #94a3b8;
+}
+
+.btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #38bdf8;
+    color: #020617;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+/* SECTIONS */
+.section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 4rem 1.5rem;
+}
+
+.section h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #38bdf8;
+}
+
+.dark {
+    background: #020617;
+}
+
+/* SKILLS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: #0f172a;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.skill-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* EXPERIENCE */
+.experience-item {
+    margin-bottom: 2rem;
+}
+
+.experience-item span {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* PROJECTS */
+.project-card {
+    background: #0f172a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* CONTACT */
+.contact-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contact-links a {
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
 }
