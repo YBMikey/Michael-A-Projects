@@ -1,175 +1,574 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio | Home</title>
 
+  <title>Michael Asemota | Engineering Portfolio</title>
+
+  <!-- Main CSS File -->
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /*
+      TEMP STYLES
+      -----------------------------------
+      These are only starter styles.
+      You can move ALL of this into style.css later.
+    */
+
+    * {
       margin: 0;
       padding: 0;
-      background: #f8f9fa;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
       color: #111;
+      line-height: 1.6;
     }
 
     .container {
-      width: 80%;
+      width: 85%;
+      max-width: 1200px;
       margin: auto;
-      padding: 40px 0;
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: #111;
-      color: white;
-      border-radius: 10px;
+    section {
+      padding: 80px 0;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 42px;
+    h1, h2, h3 {
+      margin-bottom: 20px;
     }
 
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
-      color: #ccc;
+    p {
+      margin-bottom: 15px;
+      color: #444;
     }
 
-    .section {
-      margin-top: 40px;
+    /* ---------------- NAVBAR ---------------- */
+
+    nav {
       background: white;
-      padding: 25px;
-      border-radius: 10px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .nav-container {
+      width: 85%;
+      max-width: 1200px;
+      margin: auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 20px 0;
     }
 
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 10px;
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .nav-links a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #111;
       transition: 0.2s ease;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    .nav-links a:hover {
+      opacity: 0.7;
     }
 
-    .card a {
+    /* ---------------- HERO ---------------- */
+
+    .hero {
+      min-height: 85vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f2f2f2 100%
+      );
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 10px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-secondary {
+      border: 1px solid #111;
+      color: #111;
+    }
+
+    .btn-secondary:hover {
+      background: #111;
+      color: white;
+    }
+
+    /* ---------------- ABOUT ---------------- */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+
+    /* ---------------- SKILLS ---------------- */
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill-tag {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    /* ---------------- PROJECTS ---------------- */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .project-image {
+      height: 200px;
+      background: #ddd;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 15px;
       text-decoration: none;
       color: #111;
       font-weight: bold;
     }
 
-    .tag {
-      display: inline-block;
-      background: #e0e0e0;
-      padding: 5px 10px;
-      margin: 5px 5px 0 0;
-      border-radius: 5px;
-      font-size: 12px;
+    /* ---------------- EXPERIENCE ---------------- */
+
+    .experience-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
     }
+
+    /* ---------------- CONTACT ---------------- */
+
+    .contact-links a {
+      display: inline-block;
+      margin-right: 20px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    /* ---------------- FOOTER ---------------- */
 
     footer {
       text-align: center;
-      padding: 30px;
-      color: #666;
-      font-size: 14px;
+      padding: 40px 20px;
+      background: white;
+      border-top: 1px solid #ddd;
+      margin-top: 80px;
     }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 768px) {
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .container,
+      .nav-container {
+        width: 92%;
+      }
+    }
+
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <!-- ================= NAVBAR ================= -->
 
-  <!-- HERO SECTION -->
-  <header>
-    <h1>Your Name Here</h1>
-    <p>Industrial Engineering Student | Robotics | CAD | Automation | Systems Design</p>
-  </header>
+  <nav>
+    <div class="nav-container">
 
-  <!-- ABOUT -->
-  <div class="section">
-    <h2>About Me</h2>
-    <p>
-      I am an Industrial Engineering student focused on robotics, mechanical design, and automation systems.
-      My experience includes CAD modeling, embedded systems, and hands-on robotics development through team-based engineering projects.
-    </p>
-  </div>
-
-  <!-- SKILLS -->
-  <div class="section">
-    <h2>Skills</h2>
-
-    <span class="tag">SolidWorks</span>
-    <span class="tag">Fusion 360</span>
-    <span class="tag">AutoCAD</span>
-    <span class="tag">Arduino</span>
-    <span class="tag">C++</span>
-    <span class="tag">Python</span>
-    <span class="tag">MATLAB</span>
-    <span class="tag">3D Printing</span>
-    <span class="tag">FMEA</span>
-    <span class="tag">DFM / DFA</span>
-  </div>
-
-  <!-- PROJECTS -->
-  <div class="section">
-    <h2>Projects</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <a href="projects/robo-masters.html">RoboMasters Standard Robot</a>
-        <p>Competition robotics system focused on drivetrain, gimbal stabilization, and modular design.</p>
+      <div class="logo">
+        Michael Asemota
       </div>
 
-      <div class="card">
-        <a href="projects/mecanum-robot.html">Mecanum Wheel Robot</a>
-        <p>Omnidirectional robot using mecanum wheels for advanced mobility and control testing.</p>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
       </div>
 
     </div>
-  </div>
+  </nav>
 
-  <!-- EXPERIENCE -->
-  <div class="section">
-    <h2>Experience</h2>
-    <ul>
-      <li>Associate Manager – Skechers (2022–2024)</li>
-      <li>Shift Lead – Columbia (2021–2022)</li>
-      <li>UTA Racing Team Member</li>
-      <li>UTA RoboMasters Engineering Team</li>
-    </ul>
-  </div>
+  <!-- ================= HERO ================= -->
 
-  <!-- CONTACT -->
-  <div class="section">
-    <h2>Contact</h2>
-    <p>Email: yourname@email.com</p>
-    <p>GitHub: https://github.com/yourusername</p>
-    <p>LinkedIn: https://linkedin.com/in/yourprofile</p>
-  </div>
+  <section class="hero">
 
-</div>
+    <div class="container">
 
-<footer>
-  © 2026 Your Name — Built with GitHub Pages
-</footer>
+      <h1>Engineering Portfolio</h1>
+
+      <p>
+        Industrial Engineering student focused on robotics,
+        CAD design, automation systems, and hands-on engineering development.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#projects" class="btn btn-primary">
+          View Projects
+        </a>
+
+        <a href="resume/resume.pdf" class="btn btn-secondary">
+          Resume
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <h2>About Me</h2>
+
+      <div class="about-grid">
+
+        <div class="about-card">
+
+          <p>
+            I am an Industrial Engineering student at
+            [University of Texas at Arlington](chatgpt://generic-entity?number=0)
+            with experience in robotics, CAD modeling,
+            embedded systems, and engineering project development.
+          </p>
+
+          <p>
+            My interests include robotics systems,
+            mechanical design, automation,
+            and product development workflows.
+          </p>
+
+        </div>
+
+        <div class="about-card">
+
+          <h3>Core Focus Areas</h3>
+
+          <ul>
+            <li>Mechanical Design</li>
+            <li>Robotics Engineering</li>
+            <li>Automation Systems</li>
+            <li>Embedded Systems</li>
+            <li>Rapid Prototyping</li>
+            <li>Design for Manufacturing</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+
+  <section>
+
+    <div class="container">
+
+      <h2>Skills & Technologies</h2>
+
+      <div class="skills-container">
+
+        <div class="skill-tag">SolidWorks</div>
+        <div class="skill-tag">Fusion 360</div>
+        <div class="skill-tag">AutoCAD</div>
+        <div class="skill-tag">Onshape</div>
+        <div class="skill-tag">Arduino</div>
+        <div class="skill-tag">Python</div>
+        <div class="skill-tag">C++</div>
+        <div class="skill-tag">MATLAB</div>
+        <div class="skill-tag">3D Printing</div>
+        <div class="skill-tag">DFM</div>
+        <div class="skill-tag">DFA</div>
+        <div class="skill-tag">FMEA</div>
+        <div class="skill-tag">Lean Six Sigma</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <h2>Featured Projects</h2>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+
+        <div class="project-card">
+
+          <div class="project-image"></div>
+
+          <div class="project-content">
+
+            <h3>RoboMasters Standard Robot</h3>
+
+            <p>
+              Competition robotics platform focused on drivetrain systems,
+              modular engineering, stabilization,
+              and robotics integration.
+            </p>
+
+            <a href="projects/robo-masters.html" class="project-link">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card">
+
+          <div class="project-image"></div>
+
+          <div class="project-content">
+
+            <h3>Mecanum Wheel Robot</h3>
+
+            <p>
+              Omnidirectional robotics platform using mecanum wheel kinematics
+              and embedded motor control systems.
+            </p>
+
+            <a href="projects/mecanum-robot.html" class="project-link">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+
+  <section id="experience">
+
+    <div class="container">
+
+      <h2>Experience</h2>
+
+      <div class="experience-card">
+
+        <h3>UTA RoboMasters Team</h3>
+
+        <p>
+          Contributed to robotics design, CAD development,
+          mechanical integration, testing, and prototyping
+          for competitive robotics systems.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <h3>UTA Racing Team</h3>
+
+        <p>
+          Participated in collaborative engineering workflows
+          involving fabrication, systems integration,
+          and performance-oriented design.
+        </p>
+
+      </div>
+
+      <div class="experience-card">
+
+        <h3>Skechers — Associate Manager</h3>
+
+        <p>
+          Developed leadership, operations management,
+          communication, and team coordination experience
+          in a fast-paced environment.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <h2>Contact</h2>
+
+      <p>
+        Feel free to reach out regarding internships,
+        engineering opportunities, collaborations,
+        or project discussions.
+      </p>
+
+      <div class="contact-links">
+
+        <a href="mailto:your@email.com">
+          Email
+        </a>
+
+        <a href="https://github.com/yourusername">
+          GitHub
+        </a>
+
+        <a href="https://linkedin.com/in/yourprofile">
+          LinkedIn
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <p>
+      © 2026 Michael Asemota — Engineering Portfolio
+    </p>
+
+  </footer>
 
 </body>
 </html>
