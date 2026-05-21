@@ -1,596 +1,175 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Michael Asemota | Engineering Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Portfolio | Home</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #111;
     }
 
-    :root{
-      --bg:#0d1117;
-      --card:#161b22;
-      --border:#2d333b;
-      --text:#e6edf3;
-      --muted:#9da7b3;
-      --accent:#58a6ff;
-      --accent2:#238636;
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 40px 0;
     }
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: #111;
+      color: white;
+      border-radius: 10px;
     }
 
-    .container{
-      width:min(1150px,90%);
-      margin:auto;
+    header h1 {
+      margin: 0;
+      font-size: 42px;
     }
 
-    /* NAVBAR */
-
-    nav{
-      position:sticky;
-      top:0;
-      backdrop-filter:blur(12px);
-      background:rgba(13,17,23,.75);
-      border-bottom:1px solid var(--border);
-      z-index:1000;
+    header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ccc;
     }
 
-    .nav-content{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:1rem 0;
+    .section {
+      margin-top: 40px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
     }
 
-    .logo{
-      font-size:1.2rem;
-      font-weight:700;
-      color:var(--text);
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    .nav-links{
-      display:flex;
-      gap:1.5rem;
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 10px;
+      transition: 0.2s ease;
     }
 
-    .nav-links a{
-      color:var(--muted);
-      text-decoration:none;
-      transition:.2s;
-      font-weight:500;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
-    .nav-links a:hover{
-      color:var(--accent);
+    .card a {
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
     }
 
-    /* HERO */
-
-    .hero{
-      min-height:90vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
+    .tag {
+      display: inline-block;
+      background: #e0e0e0;
+      padding: 5px 10px;
+      margin: 5px 5px 0 0;
+      border-radius: 5px;
+      font-size: 12px;
     }
 
-    .hero-content h1{
-      font-size:4rem;
-      line-height:1;
-      margin-bottom:1rem;
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+      font-size: 14px;
     }
-
-    .hero-content h1 span{
-      color:var(--accent);
-    }
-
-    .hero-content p{
-      max-width:700px;
-      margin:auto;
-      color:var(--muted);
-      font-size:1.1rem;
-    }
-
-    .hero-buttons{
-      margin-top:2rem;
-      display:flex;
-      justify-content:center;
-      gap:1rem;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:.9rem 1.4rem;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:600;
-      transition:.25s;
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:#fff;
-    }
-
-    .btn-primary:hover{
-      opacity:.85;
-    }
-
-    .btn-secondary{
-      border:1px solid var(--border);
-      color:var(--text);
-    }
-
-    .btn-secondary:hover{
-      border-color:var(--accent);
-      color:var(--accent);
-    }
-
-    /* SECTION */
-
-    section{
-      padding:5rem 0;
-    }
-
-    .section-title{
-      font-size:2.2rem;
-      margin-bottom:2rem;
-    }
-
-    /* ABOUT */
-
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:3rem;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      padding:2rem;
-      border-radius:18px;
-    }
-
-    .card h3{
-      margin-bottom:1rem;
-      color:var(--accent);
-    }
-
-    /* SKILLS */
-
-    .skills-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:1.5rem;
-    }
-
-    .skill-list{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.7rem;
-      margin-top:1rem;
-    }
-
-    .skill{
-      background:#21262d;
-      border:1px solid var(--border);
-      padding:.5rem .8rem;
-      border-radius:999px;
-      font-size:.9rem;
-      color:var(--muted);
-    }
-
-    /* PROJECTS */
-
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:1.8rem;
-    }
-
-    .project-card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:20px;
-      overflow:hidden;
-      transition:.25s;
-    }
-
-    .project-card:hover{
-      transform:translateY(-5px);
-      border-color:var(--accent);
-    }
-
-    .project-content{
-      padding:1.5rem;
-    }
-
-    .project-content h3{
-      margin-bottom:.7rem;
-    }
-
-    .project-content p{
-      color:var(--muted);
-      margin-bottom:1rem;
-      font-size:.95rem;
-    }
-
-    .tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-    }
-
-    .tag{
-      background:#1f2937;
-      color:var(--accent);
-      padding:.35rem .7rem;
-      border-radius:999px;
-      font-size:.8rem;
-      border:1px solid rgba(88,166,255,.25);
-    }
-
-    /* EXPERIENCE */
-
-    .timeline{
-      display:flex;
-      flex-direction:column;
-      gap:1.5rem;
-    }
-
-    .timeline-item{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-left:4px solid var(--accent);
-      padding:1.5rem;
-      border-radius:14px;
-    }
-
-    .timeline-item h3{
-      margin-bottom:.3rem;
-    }
-
-    .timeline-item span{
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    /* CONTACT */
-
-    .contact{
-      text-align:center;
-    }
-
-    .contact p{
-      color:var(--muted);
-      margin-bottom:2rem;
-    }
-
-    footer{
-      padding:2rem 0;
-      text-align:center;
-      border-top:1px solid var(--border);
-      color:var(--muted);
-      font-size:.9rem;
-    }
-
-    @media(max-width:800px){
-
-      .hero-content h1{
-        font-size:2.7rem;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
-
-      .nav-links{
-        display:none;
-      }
-    }
-
   </style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
+<div class="container">
 
-  <nav>
-    <div class="container nav-content">
-      <div class="logo">Michael Asemota</div>
-
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-
-  <section class="hero">
-    <div class="container hero-content">
-
-      <h1>
-        Industrial Engineering
-        <span>Portfolio</span>
-      </h1>
-
-      <p>
-        Engineering student at the University of Texas at Arlington focused on robotics,
-        CAD design, manufacturing systems, automation, and mechanical integration.
-        Passionate about building high-performance engineering systems and solving
-        real-world technical challenges.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="resume.pdf" class="btn btn-primary">
-          Download Resume
-        </a>
-
-        <a href="https://github.com/" target="_blank" class="btn btn-secondary">
-          GitHub
-        </a>
-      </div>
-
-    </div>
-  </section>
+  <!-- HERO SECTION -->
+  <header>
+    <h1>Your Name Here</h1>
+    <p>Industrial Engineering Student | Robotics | CAD | Automation | Systems Design</p>
+  </header>
 
   <!-- ABOUT -->
-
-  <section id="about">
-    <div class="container">
-
-      <h2 class="section-title">About Me</h2>
-
-      <div class="about">
-
-        <div class="card">
-          <h3>Education</h3>
-
-          <p>
-            <strong>University of Texas at Arlington</strong><br>
-            Industrial Engineering Major<br>
-            Expected Graduation: 2027
-          </p>
-
-          <br>
-
-          <p>
-            Active in robotics, Formula SAE, and engineering leadership organizations
-            including NSBE and UTA RoboMasters.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Engineering Focus</h3>
-
-          <p>
-            My interests include robotics, automation, manufacturing optimization,
-            CAD design, system integration, and mechanical engineering applications.
-          </p>
-
-          <br>
-
-          <p>
-            I enjoy combining engineering analysis with hands-on prototyping to create
-            efficient and reliable systems.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <div class="section">
+    <h2>About Me</h2>
+    <p>
+      I am an Industrial Engineering student focused on robotics, mechanical design, and automation systems.
+      My experience includes CAD modeling, embedded systems, and hands-on robotics development through team-based engineering projects.
+    </p>
+  </div>
 
   <!-- SKILLS -->
+  <div class="section">
+    <h2>Skills</h2>
 
-  <section id="skills">
-    <div class="container">
-
-      <h2 class="section-title">Technical Skills</h2>
-
-      <div class="skills-grid">
-
-        <div class="card">
-          <h3>CAD & Design</h3>
-
-          <div class="skill-list">
-            <div class="skill">SolidWorks</div>
-            <div class="skill">Fusion360</div>
-            <div class="skill">AutoCAD</div>
-            <div class="skill">Onshape</div>
-            <div class="skill">MATLAB</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Programming</h3>
-
-          <div class="skill-list">
-            <div class="skill">C++</div>
-            <div class="skill">Python</div>
-            <div class="skill">Arduino</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Engineering</h3>
-
-          <div class="skill-list">
-            <div class="skill">Robotics</div>
-            <div class="skill">3D Printing</div>
-            <div class="skill">DFM</div>
-            <div class="skill">DFA</div>
-            <div class="skill">FMEA</div>
-            <div class="skill">Fixture Design</div>
-            <div class="skill">Lean Manufacturing</div>
-            <div class="skill">Root Cause Analysis</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+    <span class="tag">SolidWorks</span>
+    <span class="tag">Fusion 360</span>
+    <span class="tag">AutoCAD</span>
+    <span class="tag">Arduino</span>
+    <span class="tag">C++</span>
+    <span class="tag">Python</span>
+    <span class="tag">MATLAB</span>
+    <span class="tag">3D Printing</span>
+    <span class="tag">FMEA</span>
+    <span class="tag">DFM / DFA</span>
+  </div>
 
   <!-- PROJECTS -->
+  <div class="section">
+    <h2>Projects</h2>
 
-  <section id="projects">
-    <div class="container">
+    <div class="grid">
 
-      <h2 class="section-title">Engineering Projects</h2>
-
-      <div class="projects-grid">
-
-        <div class="project-card">
-          <div class="project-content">
-
-            <h3>RoboMasters Standard Robot</h3>
-
-            <p>
-              Designed and integrated drivetrain systems, chassis structure,
-              and a dual-axis gimbal turret assembly for competition robotics.
-            </p>
-
-            <div class="tags">
-              <div class="tag">SolidWorks</div>
-              <div class="tag">Robotics</div>
-              <div class="tag">System Integration</div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-content">
-
-            <h3>Arduino Mecanum Robot</h3>
-
-            <p>
-              Engineered an omnidirectional robotic platform with custom motion
-              control algorithms for precision movement and positioning.
-            </p>
-
-            <div class="tags">
-              <div class="tag">Arduino</div>
-              <div class="tag">C++</div>
-              <div class="tag">CAD Design</div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-content">
-
-            <h3>Precision Transfer Robot</h3>
-
-            <p>
-              Built an Arduino-based robotic mechanism utilizing rack-and-pinion
-              motion systems for accurate object transfer operations.
-            </p>
-
-            <div class="tags">
-              <div class="tag">Mechanical Design</div>
-              <div class="tag">Automation</div>
-              <div class="tag">Arduino</div>
-            </div>
-
-          </div>
-        </div>
-
+      <div class="card">
+        <a href="projects/robo-masters.html">RoboMasters Standard Robot</a>
+        <p>Competition robotics system focused on drivetrain, gimbal stabilization, and modular design.</p>
       </div>
+
+      <div class="card">
+        <a href="projects/mecanum-robot.html">Mecanum Wheel Robot</a>
+        <p>Omnidirectional robot using mecanum wheels for advanced mobility and control testing.</p>
+      </div>
+
     </div>
-  </section>
+  </div>
 
   <!-- EXPERIENCE -->
-
-  <section id="experience">
-    <div class="container">
-
-      <h2 class="section-title">Experience</h2>
-
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <h3>Associate Manager — Skechers</h3>
-          <span>2022 – 2024</span>
-
-          <p>
-            Led store operations, inventory management, labor optimization,
-            and process improvements while supervising 10–15 associates.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>Shift Lead — Columbia</h3>
-          <span>2021 – 2022</span>
-
-          <p>
-            Managed merchandising operations, inventory control, onboarding,
-            and customer engagement initiatives.
-          </p>
-        </div>
-
-        <div class="timeline-item">
-          <h3>UTA RoboMasters — Gimbal Team Lead</h3>
-          <span>2024 – Present</span>
-
-          <p>
-            Led gimbal system development, technical coordination,
-            testing, and cross-functional engineering collaboration.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <div class="section">
+    <h2>Experience</h2>
+    <ul>
+      <li>Associate Manager – Skechers (2022–2024)</li>
+      <li>Shift Lead – Columbia (2021–2022)</li>
+      <li>UTA Racing Team Member</li>
+      <li>UTA RoboMasters Engineering Team</li>
+    </ul>
+  </div>
 
   <!-- CONTACT -->
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Email: yourname@email.com</p>
+    <p>GitHub: https://github.com/yourusername</p>
+    <p>LinkedIn: https://linkedin.com/in/yourprofile</p>
+  </div>
 
-  <section id="contact">
-    <div class="container contact">
+</div>
 
-      <h2 class="section-title">Contact</h2>
-
-      <p>
-        Open to engineering internships, robotics opportunities,
-        and collaborative technical projects.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="mailto:michael.asemotaa@gmail.com" class="btn btn-primary">
-          Email Me
-        </a>
-
-        <a href="https://linkedin.com/" target="_blank" class="btn btn-secondary">
-          LinkedIn
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Michael Asemota — Engineering Portfolio
-  </footer>
+<footer>
+  © 2026 Your Name — Built with GitHub Pages
+</footer>
 
 </body>
 </html>
