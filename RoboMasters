@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoboMasters Standard Robot | Portfolio</title>
+
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    h1, h2 {
+      color: #111;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e0e0e0;
+      padding: 5px 10px;
+      margin: 5px 5px 0 0;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <a class="back" href="../index.html">← Back to Home</a>
+
+  <h1>RoboMasters Standard Robot</h1>
+  <p>
+    Competition robotics system developed for <strong>
+    [RoboMaster](chatgpt://generic-entity?number=0)
+    </strong> focusing on mobility, targeting systems, and modular design.
+  </p>
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      Designed and contributed to the development of a competitive robotics platform for UTA RoboMasters team.
+      The project focused on building a high-performance, modular robot capable of autonomous and manual control
+      in dynamic combat-style environments.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>My Role</h2>
+    <ul>
+      <li>Mechanical design using SolidWorks</li>
+      <li>Gimbal and stabilization system development</li>
+      <li>Assisted in drivetrain and chassis optimization</li>
+      <li>Worked on Arduino-based control integration</li>
+      <li>Supported testing, debugging, and iteration cycles</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Tools & Technologies</h2>
+    <span class="tag">SolidWorks</span>
+    <span class="tag">Fusion 360</span>
+    <span class="tag">Arduino</span>
+    <span class="tag">C++</span>
+    <span class="tag">MATLAB</span>
+    <span class="tag">3D Printing</span>
+    <span class="tag">Mechanical Design</span>
+    <span class="tag">FMEA</span>
+  </div>
+
+  <div class="section">
+    <h2>Engineering Challenges</h2>
+    <ul>
+      <li>Maintaining stability in high-speed motion</li>
+      <li>Reducing vibration in gimbal system</li>
+      <li>Optimizing weight vs. durability trade-offs</li>
+      <li>Ensuring reliable control signal communication</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Design Process</h2>
+    <p>
+      Iterative design approach using CAD modeling, prototype testing, and failure analysis.
+      Multiple revisions were made to improve chassis rigidity and improve system response time.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Gallery</h2>
+    <p>Replace these with your actual images:</p>
+
+    <img src="../assets/images/robot1.jpg" alt="RoboMasters Robot">
+    <img src="../assets/images/robot2.jpg" alt="Gimbal System">
+  </div>
+
+  <div class="section">
+    <h2>Results</h2>
+    <ul>
+      <li>Improved structural stability after redesign iterations</li>
+      <li>Reduced system vibration through gimbal tuning</li>
+      <li>Increased modularity for faster maintenance and upgrades</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Key Takeaways</h2>
+    <p>
+      This project strengthened my understanding of mechanical system integration, real-world iteration cycles,
+      and design-for-manufacturing principles under competitive engineering constraints.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
