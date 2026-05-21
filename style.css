@@ -1,156 +1,272 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
+  <style>
+    /*
+      TEMP STYLES
+      -----------------------------------
+      These are only starter styles.
+      You can move ALL of this into style.css later.
+    */
 
-body {
-    background-color: #0f172a;
-    color: #e5e7eb;
-    line-height: 1.6;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* NAVBAR */
-nav {
-    background: #020617;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.6;
+    }
 
-.nav-container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .container {
+      width: 85%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.logo {
-    font-weight: 700;
-    color: #38bdf8;
-}
+    section {
+      padding: 80px 0;
+    }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
+    h1, h2, h3 {
+      margin-bottom: 20px;
+    }
 
-.nav-links a {
-    color: #e5e7eb;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
+    p {
+      margin-bottom: 15px;
+      color: #444;
+    }
 
-.nav-links a:hover {
-    color: #38bdf8;
-}
+    /* ---------------- NAVBAR ---------------- */
 
-/* HERO */
-.hero {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: linear-gradient(135deg, #020617, #0f172a);
-}
+    nav {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.hero h2 {
-    font-size: 3rem;
-    font-weight: 700;
-}
+    .nav-container {
+      width: 85%;
+      max-width: 1200px;
+      margin: auto;
 
-.subtitle {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-    color: #94a3b8;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-.btn {
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    background: #38bdf8;
-    color: #020617;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 5px;
-}
+      padding: 20px 0;
+    }
 
-/* SECTIONS */
-.section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 4rem 1.5rem;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
 
-.section h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #38bdf8;
-}
+    .nav-links a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #111;
+      transition: 0.2s ease;
+    }
 
-.dark {
-    background: #020617;
-}
+    .nav-links a:hover {
+      opacity: 0.7;
+    }
 
-/* SKILLS */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-}
+    /* ---------------- HERO ---------------- */
 
-.skill-card {
-    background: #0f172a;
-    padding: 1.5rem;
-    border-radius: 8px;
-}
+    .hero {
+      min-height: 85vh;
 
-.skill-card h4 {
-    margin-bottom: 0.5rem;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-/* EXPERIENCE */
-.experience-item {
-    margin-bottom: 2rem;
-}
+      text-align: center;
 
-.experience-item span {
-    display: block;
-    font-size: 0.85rem;
-    color: #94a3b8;
-}
+      background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f2f2f2 100%
+      );
+    }
 
-/* PROJECTS */
-.project-card {
-    background: #0f172a;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-}
+    .hero h1 {
+      font-size: 64px;
+      margin-bottom: 20px;
+    }
 
-/* CONTACT */
-.contact-links {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: auto;
+      margin-bottom: 30px;
+    }
 
-.contact-links a {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 600;
-}
+    .hero-buttons {
+      margin-top: 30px;
+    }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.8rem;
-    color: #94a3b8;
-}
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      margin: 10px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+    }
+
+    .btn-secondary {
+      border: 1px solid #111;
+      color: #111;
+    }
+
+    .btn-secondary:hover {
+      background: #111;
+      color: white;
+    }
+
+    /* ---------------- ABOUT ---------------- */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+    }
+
+    /* ---------------- SKILLS ---------------- */
+
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skill-tag {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    /* ---------------- PROJECTS ---------------- */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+
+      transition: 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .project-image {
+      height: 200px;
+      background: #ddd;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    /* ---------------- EXPERIENCE ---------------- */
+
+    .experience-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+    }
+
+    /* ---------------- CONTACT ---------------- */
+
+    .contact-links a {
+      display: inline-block;
+      margin-right: 20px;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: white;
+      border-top: 1px solid #ddd;
+      margin-top: 80px;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 768px) {
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .container,
+      .nav-container {
+        width: 92%;
+      }
+    }
+
+  </style>
