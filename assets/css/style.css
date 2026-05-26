@@ -584,3 +584,37 @@ footer {
   }
 
 }
+
+/* =========================================
+   MOBILE IMAGE FIXES
+========================================= */
+
+@media (max-width: 768px) {
+
+  /* Hero image */
+
+  .project-hero-image {
+    height: 260px;
+  }
+
+  .project-hero-image img {
+    object-fit: cover;
+  }
+
+  /* Gallery */
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .project-gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
+    border-radius: 14px;
+    background: #eee;
+  }
+
+}
