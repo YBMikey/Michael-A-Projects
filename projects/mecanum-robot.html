@@ -1,154 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mecanum Drive Robot | Portfolio</title>
+
+  <title>Mecanum Wheel Robot | Michael Asemota</title>
 
   <link rel="stylesheet" href="../assets/css/style.css">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f8f9fa;
-    }
-
-    .container {
-      width: 80%;
-      margin: auto;
-      padding: 40px 0;
-    }
-
-    h1, h2 {
-      color: #111;
-    }
-
-    .section {
-      margin-bottom: 40px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #e0e0e0;
-      padding: 5px 10px;
-      margin: 5px 5px 0 0;
-      border-radius: 5px;
-      font-size: 12px;
-    }
-
-    img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    .back {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
-      color: #333;
-    }
-  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container project-page">
 
-  <a class="back" href="../index.html">← Back to Home</a>
+    <!-- ================= BACK LINK ================= -->
 
-  <h1>Mecanum Wheel Autonomous Robot</h1>
+    <a class="back-link" href="../index.html">
+      ← Back to Portfolio
+    </a>
 
-  <p>
-    Designed and built a holonomic-drive robot using mecanum wheels to achieve
-    full 360° movement for advanced mobility and control testing in robotics systems.
-  </p>
+    <!-- ================= HERO ================= -->
 
-  <div class="section">
-    <h2>Overview</h2>
-    <p>
-      This project focuses on the design and implementation of a mecanum wheel drive system
-      capable of omnidirectional movement. The robot was developed as part of hands-on robotics
-      experimentation with motion control, kinematics, and embedded systems.
-    </p>
+    <div class="project-hero">
+
+      <div class="project-hero-image">
+        <img src="../assets/images/mecanum-main.jpg"
+             alt="Mecanum Wheel Robot">
+      </div>
+
+      <div class="project-hero-content">
+
+        <p class="project-label">
+          Robotics Engineering Project
+        </p>
+
+        <h1>Mecanum Wheel Robot</h1>
+
+        <p class="project-description">
+          Omnidirectional robotics platform designed and developed to demonstrate
+          advanced motion control using mecanum wheel kinematics, enabling full
+          360° movement without changing orientation. The system integrates embedded
+          motor control, mechanical design, and real-time movement logic.
+        </p>
+
+        <!-- ================= PROJECT STATS ================= -->
+
+        <div class="project-stats">
+
+          <div class="project-stat">
+
+            <div class="project-stat-title">
+              Mobility System
+            </div>
+
+            <div class="project-stat-value">
+              Mecanum Drive (Omnidirectional)
+            </div>
+
+          </div>
+
+          <div class="project-stat">
+
+            <div class="project-stat-title">
+              Control System
+            </div>
+
+            <div class="project-stat-value">
+              Arduino + C++ Motor Control
+            </div>
+
+          </div>
+
+          <div class="project-stat">
+
+            <div class="project-stat-title">
+              Engineering Focus
+            </div>
+
+            <div class="project-stat-value">
+              Kinematics & Control Systems
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= OVERVIEW ================= -->
+
+    <div class="project-section">
+
+      <h2>Project Overview</h2>
+
+      <p>
+        The Mecanum Wheel Robot was developed as a mobility and controls-focused
+        engineering project to explore omnidirectional movement using independent
+        wheel actuation and vector-based motion control.
+      </p>
+
+      <p>
+        Unlike traditional differential drive systems, this robot can move in any
+        direction without changing its orientation, requiring precise coordination
+        of all four motors through inverse kinematics and PWM motor control logic.
+      </p>
+
+      <p>
+        The platform served as a testbed for understanding real-world robotics
+        motion planning, control signal synchronization, and mechanical alignment
+        challenges associated with non-standard wheel systems.
+      </p>
+
+    </div>
+
+    <!-- ================= CONTRIBUTIONS ================= -->
+
+    <div class="project-section">
+
+      <h2>Engineering Contributions</h2>
+
+      <ul>
+
+        <li>
+          Designed and assembled mechanical chassis optimized for four mecanum wheel integration.
+        </li>
+
+        <li>
+          Implemented Arduino-based motor control system for independent wheel actuation.
+        </li>
+
+        <li>
+          Developed movement logic for forward, sideways (strafe), diagonal, and rotational motion.
+        </li>
+
+        <li>
+          Tuned motor response to reduce drift and improve directional accuracy.
+        </li>
+
+        <li>
+          Integrated wiring and power distribution for stable multi-motor operation.
+        </li>
+
+        <li>
+          Conducted iterative testing to refine movement precision and system responsiveness.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- ================= TOOLS ================= -->
+
+    <div class="project-section">
+
+      <h2>Tools & Technologies</h2>
+
+      <div class="project-tags">
+
+        <span class="project-tag">Arduino</span>
+        <span class="project-tag">C++</span>
+        <span class="project-tag">PWM Motor Control</span>
+        <span class="project-tag">DC Motors</span>
+        <span class="project-tag">Mecanum Kinematics</span>
+        <span class="project-tag">3D Printing</span>
+        <span class="project-tag">SolidWorks</span>
+        <span class="project-tag">Embedded Systems</span>
+        <span class="project-tag">Control Systems</span>
+
+      </div>
+
+    </div>
+
+    <!-- ================= CHALLENGES ================= -->
+
+    <div class="project-section">
+
+      <h2>Engineering Challenges</h2>
+
+      <ul>
+
+        <li>
+          Achieving accurate omnidirectional movement due to wheel slippage and friction variability.
+        </li>
+
+        <li>
+          Synchronizing motor speeds across all four wheels to prevent drift and rotation errors.
+        </li>
+
+        <li>
+          Tuning control signals for smooth directional transitions and stable response.
+        </li>
+
+        <li>
+          Managing mechanical alignment of mecanum rollers for consistent vector motion.
+        </li>
+
+        <li>
+          Balancing torque distribution across motors under different load conditions.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- ================= DESIGN PROCESS ================= -->
+
+    <div class="project-section">
+
+      <h2>Design & Development Process</h2>
+
+      <p>
+        The project followed an iterative prototyping approach beginning with chassis
+        design and progressing through motor integration, control system development,
+        and movement calibration.
+      </p>
+
+      <p>
+        Initial testing focused on identifying mechanical drift and correcting
+        inconsistencies in wheel alignment and motor output. Software iterations
+        refined motion equations to translate directional input into independent
+        wheel speeds.
+      </p>
+
+      <p>
+        Continuous testing cycles improved system responsiveness and reduced error
+        accumulation during complex movement patterns.
+      </p>
+
+    </div>
+
+    <!-- ================= RESULTS ================= -->
+
+    <div class="project-section">
+
+      <h2>Project Outcomes</h2>
+
+      <ul>
+
+        <li>
+          Achieved functional omnidirectional movement with improved directional accuracy.
+        </li>
+
+        <li>
+          Reduced drift through motor calibration and control tuning.
+        </li>
+
+        <li>
+          Improved system stability during diagonal and lateral movement modes.
+        </li>
+
+        <li>
+          Gained hands-on experience with kinematics-based robotic control systems.
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- ================= GALLERY ================= -->
+
+    <div class="project-section">
+
+      <h2>Project Gallery</h2>
+
+      <div class="project-gallery">
+
+        <img src="../assets/images/mecanum1.jpg" alt="Mecanum Robot Front View">
+        <img src="../assets/images/mecanum2.jpg" alt="Wheel Assembly Detail">
+        <img src="../assets/images/mecanum3.jpg" alt="Chassis Structure">
+
+      </div>
+
+    </div>
+
   </div>
-
-  <div class="section">
-    <h2>My Role</h2>
-    <ul>
-      <li>Designed chassis layout and wheel placement in CAD</li>
-      <li>Implemented mecanum drive kinematics logic</li>
-      <li>Programmed Arduino-based motor control system</li>
-      <li>Tested movement algorithms for strafing and rotation</li>
-      <li>Debugged motor synchronization issues</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Tools & Technologies</h2>
-
-    <span class="tag">SolidWorks</span>
-    <span class="tag">Arduino</span>
-    <span class="tag">C++</span>
-    <span class="tag">DC Motors</span>
-    <span class="tag">Mecanum Wheels</span>
-    <span class="tag">Control Systems</span>
-    <span class="tag">3D Printing</span>
-    <span class="tag">MATLAB</span>
-  </div>
-
-  <div class="section">
-    <h2>Engineering Challenges</h2>
-    <ul>
-      <li>Correcting drift caused by uneven wheel friction</li>
-      <li>Balancing torque across all four motors</li>
-      <li>Implementing accurate strafing movement</li>
-      <li>Tuning control signals for smooth motion</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Design Process</h2>
-    <p>
-      The design began with CAD modeling of the chassis and wheel configuration.
-      Multiple iterations were required to optimize weight distribution and wheel alignment.
-      Control logic was developed and refined through repeated testing of movement vectors.
-    </p>
-  </div>
-
-  <div class="section">
-    <h2>Gallery</h2>
-
-    <p>Replace these images with your actual robot photos:</p>
-
-    <img src="../assets/images/mecanum1.jpg" alt="Mecanum Robot Front View">
-    <img src="../assets/images/mecanum2.jpg" alt="Mecanum Wheel Assembly">
-  </div>
-
-  <div class="section">
-    <h2>Results</h2>
-    <ul>
-      <li>Achieved stable omnidirectional movement</li>
-      <li>Improved motor synchronization through calibration</li>
-      <li>Successfully demonstrated strafing and diagonal motion</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Key Takeaways</h2>
-    <p>
-      This project strengthened my understanding of kinematics, motor control, and real-world
-      mechanical-electrical system integration.
-    </p>
-  </div>
-
-</div>
 
 </body>
+
 </html>
