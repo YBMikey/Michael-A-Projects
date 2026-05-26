@@ -275,14 +275,15 @@ p {
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #ddd;
+  position: relative;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
   object-position: center;
-  display: block;
 }
 
 .project-content {
