@@ -313,8 +313,12 @@ p {
 }
 
 .project-image {
+  width: 100%;
   height: 220px;
-  background: #ddd;
+
+  object-fit: cover;
+
+  display: block;
 }
 
 .project-content {
