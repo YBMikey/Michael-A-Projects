@@ -10,11 +10,13 @@
 
   <link rel="stylesheet" href="../assets/css/style.css">
 
+  <script src="../assets/js/site.js" defer></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="container project-page">
+  <main id="main" class="container project-page">
 
     <!-- ================= BACK LINK ================= -->
 
@@ -22,12 +24,14 @@
       ← Back to Portfolio
     </a>
 
+    <nav class="project-nav" aria-label="Project sections"><a href="#project-overview">Overview</a><a href="#engineering-contributions">Contributions</a><a href="#tools-technologies">Tools & Technologies</a><a href="#engineering-challenges">Challenges</a><a href="#design-development-process">Process</a><a href="#project-outcomes">Outcomes</a><a href="#project-gallery">Gallery</a></nav>
+
     <!-- ================= HERO ================= -->
 
     <div class="project-hero">
 
       <div class="project-hero-image">
-        <img src="../assets/images/MecMain.png"
+        <img decoding="async" src="../assets/images/MecMain.png"
              alt="Mecanum Wheel Robot">
       </div>
 
@@ -96,7 +100,7 @@
 
     <div class="project-section">
 
-      <h2>Project Overview</h2>
+      <h2 id="project-overview">Project Overview</h2>
 
       <p>
         The Mecanum Wheel Robot was developed as a mobility and controls-focused
@@ -122,7 +126,7 @@
 
     <div class="project-section">
 
-      <h2>Engineering Contributions</h2>
+      <h2 id="engineering-contributions">Engineering Contributions</h2>
 
       <ul>
 
@@ -158,7 +162,7 @@
 
     <div class="project-section">
 
-      <h2>Tools & Technologies</h2>
+      <h2 id="tools-technologies">Tools & Technologies</h2>
 
       <div class="project-tags">
 
@@ -180,7 +184,7 @@
 
     <div class="project-section">
 
-      <h2>Engineering Challenges</h2>
+      <h2 id="engineering-challenges">Engineering Challenges</h2>
 
       <ul>
 
@@ -212,7 +216,7 @@
 
     <div class="project-section">
 
-      <h2>Design & Development Process</h2>
+      <h2 id="design-development-process">Design & Development Process</h2>
 
       <p>
         The project followed an iterative prototyping approach beginning with chassis
@@ -238,7 +242,7 @@
 
     <div class="project-section">
 
-      <h2>Project Outcomes</h2>
+      <h2 id="project-outcomes">Project Outcomes</h2>
 
       <ul>
 
@@ -266,25 +270,26 @@
 
     <div class="project-section">
 
-      <h2>Project Gallery</h2>
+      <h2 id="project-gallery">Project Gallery</h2>
 
       <div class="project-gallery">
 
-        <img src="../assets/images/mec1.png" alt="Mecanum Robot Front View">
-        <img src="../assets/images/mec2.jpg" alt="Wheel Assembly Detail">
-        <img src="../assets/images/mec3.png" alt="Chassis Structure">
-        <img src="../assets/images/mec4.png" alt="Mecanum Robot Front View">
-        <img src="../assets/images/mec5.png" alt="Wheel Assembly Detail">
-        <img src="../assets/images/mec6.png" alt="Chassis Structure">
-        <img src="../assets/images/mec7.png" alt="Mecanum Robot Front View">
-        <img src="../assets/images/mec8.png" alt="Wheel Assembly Detail">
-        <img src="../assets/images/mec9.png" alt="Chassis Structure">
+        <img loading="lazy" decoding="async" src="../assets/images/mec1.png" alt="Mecanum Robot Front View">
+        <img loading="lazy" decoding="async" src="../assets/images/mec2.jpg" alt="Wheel Assembly Detail">
+        <img loading="lazy" decoding="async" src="../assets/images/mec3.png" alt="Chassis Structure">
+        <img loading="lazy" decoding="async" src="../assets/images/mec4.png" alt="Mecanum Robot Front View">
+        <img loading="lazy" decoding="async" src="../assets/images/mec5.png" alt="Wheel Assembly Detail">
+        <img loading="lazy" decoding="async" src="../assets/images/mec6.png" alt="Chassis Structure">
+        <img loading="lazy" decoding="async" src="../assets/images/mec7.png" alt="Mecanum Robot Front View">
+        <img loading="lazy" decoding="async" src="../assets/images/mec8.png" alt="Wheel Assembly Detail">
+        <img loading="lazy" decoding="async" src="../assets/images/mec9.png" alt="Chassis Structure">
 
       </div>
 
     </div>
 
-  </div>
+    <a class="next-project" href="robo-masters.html"><span>Explore another project</span><strong>RoboMasters Standard Robot →</strong></a>
+  </main>
 
 </body>
 

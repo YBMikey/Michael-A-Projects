@@ -10,11 +10,13 @@
 
   <link rel="stylesheet" href="../assets/css/style.css">
 
+  <script src="../assets/js/site.js" defer></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="container project-page">
+  <main id="main" class="container project-page">
 
     <!-- ================= BACK LINK ================= -->
 
@@ -22,12 +24,14 @@
       ← Back to Portfolio
     </a>
 
+    <nav class="project-nav" aria-label="Project sections"><a href="#tools-technologies">Tools & Technologies</a><a href="#project-overview">Overview</a><a href="#engineering-contributions">Contributions</a><a href="#engineering-challenges">Challenges</a><a href="#design-development-process">Process</a><a href="#project-outcomes">Outcomes</a><a href="#project-gallery">Gallery</a></nav>
+
     <!-- ================= HERO ================= -->
 
     <div class="project-hero">
 
       <div class="project-hero-image">
-        <img src="../assets/images/Robo-Main.jpg"
+        <img decoding="async" src="../assets/images/Robo-Main.jpg"
              alt="RoboMasters Standard Robot">
       </div>
 
@@ -69,7 +73,7 @@
             </div>
 
             <div class="project-stat-value">
-              SolidWorks, Fusion360, C++, Python
+              SolidWorks, Fusion 360, C++, Python
             </div>
 
           </div>
@@ -95,7 +99,7 @@
     <!-- ================= TOOLS ================= -->
 
     <div class="project-section">
-      <h2>Tools & Technologies</h2>
+      <h2 id="tools-technologies">Tools & Technologies</h2>
       <div class="project-tags">
         <span class="project-tag">SolidWorks</span>
         <span class="project-tag">Fusion 360</span>
@@ -112,7 +116,7 @@
     </div>
     <!-- OVERVIEW -->
     <div class="project-section">
-      <h2>Project Overview</h2>
+      <h2 id="project-overview">Project Overview</h2>
       <p>
         The RoboMasters Standard Robot was developed as part of the UTA RoboMasters
         competitive robotics team. The robot was designed to combine high-speed
@@ -133,7 +137,7 @@
     </div>
     <!-- CONTRIBUTIONS -->
     <div class="project-section">
-      <h2>Engineering Contributions</h2>
+      <h2 id="engineering-contributions">Engineering Contributions</h2>
       <h3>1. Gimbal Structural Design & Ownership</h3>
       <p>
         As Gimbal Team Lead, I led the mechanical design and development of the
@@ -211,7 +215,7 @@
     </div>
     <!-- CHALLENGES -->
     <div class="project-section">
-      <h2>Engineering Challenges</h2>
+      <h2 id="engineering-challenges">Engineering Challenges</h2>
       <ul>
         <li>
           Designing a gimbal support structure that achieved high stiffness for
@@ -255,7 +259,7 @@
     </div>
     <!-- DESIGN PROCESS -->
     <div class="project-section">
-      <h2>Design & Development Process</h2>
+      <h2 id="design-development-process">Design & Development Process</h2>
       <p>
         Development of the RoboMasters Standard Robot followed a multi-team iterative
         engineering workflow involving the chassis team, gimbal team, turret team,
@@ -312,7 +316,7 @@
     </div>
     <!-- OUTCOMES -->
     <div class="project-section">
-      <h2>Project Outcomes</h2>
+      <h2 id="project-outcomes">Project Outcomes</h2>
       <ul>
         <li>
           Improved structural performance of the gimbal support system through
@@ -357,22 +361,23 @@
     <!-- ================= GALLERY ================= -->
 
        <div class="project-section">
-      <h2>Project Gallery</h2>
+      <h2 id="project-gallery">Project Gallery</h2>
       <div class="project-gallery">
-        <img src="../assets/images/robot1.jpg" alt="RoboMasters Standard Robot">
-        <img src="../assets/images/robot2.jpg" alt="Robot Gimbal System">
-        <img src="../assets/images/robot3.jpg" alt="RoboMasters Standard Robot">
-        <img src="../assets/images/robot4.jpg" alt="Robot Gimbal System">
-        <img src="../assets/images/robot5.jpg" alt="RoboMasters Standard Robot">
-        <img src="../assets/images/robot6.jpeg" alt="Robot Gimbal System">
-        <img src="../assets/images/robot7.jpeg" alt="RoboMasters Standard Robot">
-        <img src="../assets/images/robot8.jpeg" alt="Robot Gimbal System">
-        <img src="../assets/images/robot9.jpeg" alt="RoboMasters Standard Robot">
-        <img src="../assets/images/robot10.jpeg" alt="Robot Gimbal System">
-        <img src="../assets/images/robot11.jpeg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot1.jpg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot2.jpg" alt="Robot Gimbal System">
+        <img loading="lazy" decoding="async" src="../assets/images/robot3.jpg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot4.jpg" alt="Robot Gimbal System">
+        <img loading="lazy" decoding="async" src="../assets/images/robot5.jpg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot6.jpeg" alt="Robot Gimbal System">
+        <img loading="lazy" decoding="async" src="../assets/images/robot7.jpeg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot8.jpeg" alt="Robot Gimbal System">
+        <img loading="lazy" decoding="async" src="../assets/images/robot9.jpeg" alt="RoboMasters Standard Robot">
+        <img loading="lazy" decoding="async" src="../assets/images/robot10.jpeg" alt="Robot Gimbal System">
+        <img loading="lazy" decoding="async" src="../assets/images/robot11.jpeg" alt="RoboMasters Standard Robot">
       </div>
     </div>
-  </div>
+    <a class="next-project" href="mecanum-robot.html"><span>Explore another project</span><strong>Mecanum Wheel Robot →</strong></a>
+  </main>
 </body>
 </html>
 

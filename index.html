@@ -8,25 +8,29 @@
 
   <title>Michael Asemota | Engineering Portfolio</title>
 
+  <meta name="description" content="Michael Asemota’s engineering portfolio: robotics, mechanical design, CAD, automation, and embedded systems at UT Arlington.">
+  <script src="assets/js/site.js" defer></script>
+
   <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ================= NAVBAR ================= -->
 
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Main navigation">
 
     <div class="nav-container">
 
-      <div class="logo">
-        Michael Asemota
-      </div>
+      <a class="logo" href="#main">Michael Asemota<span class="logo-dot" aria-hidden="true">.</span></a>
 
-      <div class="nav-links">
+      <button class="menu-toggle" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+      <div class="nav-links" id="navigation">
         <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
@@ -36,6 +40,7 @@
 
   </nav>
 
+  <main id="main">
   <!-- ================= HERO ================= -->
 
   <section class="hero">
@@ -54,9 +59,9 @@
         </h1>
 
         <p class="hero-description">
-          Engineering student focused on robotics systems,
-          mechanical design, automation, and embedded systems development
-          through hands-on technical projects and collaborative engineering teams.
+          I build and integrate robotics systems through hands-on mechanical design,
+          automation, and embedded development. Industrial Engineering at the
+          University of Texas at Arlington.
         </p>
 
         <div class="hero-buttons">
@@ -65,7 +70,7 @@
             View Projects
           </a>
 
-          <a href="resume.pdf" target=“_blank” class="btn btn-secondary">
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             Resume
           </a>
 
@@ -92,8 +97,7 @@
         <h2>About Me</h2>
 
         <p class="section-description">
-          Engineering student focused on robotics,
-          automation systems, and mechanical product development.
+          From CAD models to working systems: design, prototype, test, and refine.
         </p>
 
       </div>
@@ -111,11 +115,11 @@
 </p>
 
 <p>
-  My work focuses on developing efficient, reliable systems by applying engineering principles in design, manufacturing, automation, and system integration to solve real-world problems.
+  I apply design, manufacturing, automation, and system integration principles to build efficient, reliable systems that solve practical problems.
 </p>
 
 <p>
-  Through multidisciplinary engineering projects and team-based development, I have gained experience in design optimization, iterative prototyping, testing, debugging, system validation, and cross-functional collaboration from concept through implementation.
+  Working with multidisciplinary teams, I take projects from concept through implementation: optimizing designs, prototyping, testing, debugging, and validating integrated systems.
 </p>
 
         </div>
@@ -205,11 +209,12 @@
         <div class="project-card">
 
           <div class="project-image">
-            <img src="assets/images/Robo-Main.jpg" alt="RoboMasters Robot">
+            <img loading="lazy" decoding="async" src="assets/images/Robo-Main.jpg" alt="RoboMasters Robot">
           </div>
 
           <div class="project-content">
 
+            <p class="project-eyebrow">01 / Competition robotics</p>
             <h3>RoboMasters Standard Robot</h3>
 
             <p>
@@ -230,11 +235,12 @@
         <div class="project-card">
 
           <div class="project-image">
-            <img src="assets/images/MecMain.png" alt="Mecanum Robot">
+            <img loading="lazy" decoding="async" src="assets/images/MecMain.png" alt="Mecanum Robot">
           </div>
 
           <div class="project-content">
 
+            <p class="project-eyebrow">02 / Motion & control</p>
             <h3>Mecanum Wheel Robot</h3>
 
             <p>
@@ -279,7 +285,7 @@
           <h3>RoboMasters Team</h3>
 
           <p class="experience-date">
-            Robotics Engineering Team | 2023-Current
+            Robotics Engineering Team | 2023–Present
           </p>
 
           <p>
@@ -293,7 +299,7 @@
           <h3>UTA Racing Team</h3>
 
           <p class="experience-date">
-            Engineering Team Member | 2023-Current
+            Engineering Team Member | 2023–Present
           </p>
 
           <p>
@@ -307,11 +313,11 @@
           <h3>Verlo</h3>
 
           <p class="experience-date">
-            Technical Assistant | 2026–Current
+            Technical Assistant | 2026–Present
           </p>
 
           <p>
-            Applied data analysis, process improvement, and product engineering principles to streamline data collection, and improve manufacturing and distribution efficiency.
+            Applied data analysis, process improvement, and product engineering principles to streamline data collection and improve manufacturing and distribution efficiency.
           </p>
 
         </div>
@@ -365,7 +371,7 @@
         </a>
 
         <a href="https://www.linkedin.com/in/michael-asemota"
-           target="_blank"
+           target="_blank" rel="noopener noreferrer"
            class="contact-card">
 
           <h3>LinkedIn</h3>
@@ -379,6 +385,7 @@
 
   </section>
 
+  </main>
   <!-- ================= FOOTER ================= -->
 
   <footer>
@@ -387,6 +394,7 @@
 
       <p>
         © 2026 Michael Asemota — Engineering Portfolio
+        <a class="footer-top" href="#main">Back to top ↑</a>
       </p>
 
     </div>
