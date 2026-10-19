@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suspension Control Arm | Michael Asemota</title>
+  <meta name="description" content="An ongoing SolidWorks control arm design study: suspension research, CAD iterations, static FEA, and V1/V2 stress comparisons.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main" class="container project-page">
+    <a class="back-link" href="../index.html#projects">← Back to Projects</a>
+    <nav class="project-nav" aria-label="Project sections">
+      <a href="#overview">Overview</a><a href="#design">Design iterations</a><a href="#results">Results</a><a href="#process">Development log</a><a href="#next">Next steps</a><a href="#gallery">Gallery</a>
+    </nav>
+    <div class="project-hero">
+      <div class="project-hero-image"><img src="../assets/images/control-arm-3.png" alt="SolidWorks static stress plot of the control arm" decoding="async"></div>
+      <div class="project-hero-content">
+        <p class="project-label">Mechanical Design &amp; Simulation · In progress</p>
+        <h1>Suspension Control Arm</h1>
+        <p class="project-description">An independent design study of a Mercedes-Benz S550 suspension link, combining suspension research, iterative CAD modeling, and finite element analysis to understand how geometry affects structural performance.</p>
+        <div class="project-stats">
+          <div class="project-stat"><div class="project-stat-title">My Role</div><div class="project-stat-value">Independent Design &amp; Analysis</div></div>
+          <div class="project-stat"><div class="project-stat-title">Tools</div><div class="project-stat-value">SolidWorks &amp; SolidWorks Simulation</div></div>
+          <div class="project-stat"><div class="project-stat-title">Project Status</div><div class="project-stat-value">June 2026–Present · V2 evaluation</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="project-section" aria-labelledby="overview">
+      <h2 id="overview">Project Overview</h2>
+      <p>I started this project to move from understanding how automotive suspension works to designing and evaluating a component myself. The focus is a lower control arm link for a Mercedes-Benz S550, connecting the chassis bushing to the wheel-side ball joint.</p>
+      <p>The project follows an iterative workflow: research the suspension and material options, build a CAD model, examine its response to an applied load, and revise the geometry around the areas that need attention. The current work compares the original V1 model with a revised V2.</p>
+      <div class="project-tags"><span class="project-tag">Mechanical Design</span><span class="project-tag">Parametric CAD</span><span class="project-tag">Static FEA</span><span class="project-tag">Stress Analysis</span><span class="project-tag">Material Research</span><span class="project-tag">Design Iteration</span></div>
+    </section>
+    <section class="project-section" aria-labelledby="design">
+      <h2 id="design">Design Iterations</h2>
+      <h3>V1: Establishing a baseline</h3>
+      <p>The initial model established the general shape and mounting features. In the first static study, I fixed the bushing mounting location and applied a perpendicular load at the ball-joint location. The results highlighted stress near the bushing support and prompted further research into realistic loading, bending, and reinforcement.</p>
+      <h3>V2: Refining the load path</h3>
+      <ul>
+        <li><strong>Increased section width:</strong> changed the documented width from 0.8 to 1.0 inch, adding material in areas identified for reinforcement.</li>
+        <li><strong>Added fillets:</strong> rounded sharp transitions to encourage smoother stress distribution.</li>
+        <li><strong>Revised the ball-joint region:</strong> increased the surrounding wall thickness, refined the bore diameter, and replaced the blind-hole arrangement with a through-hole.</li>
+        <li><strong>Removed underside material:</strong> explored a more efficient mounting geometry while retaining support around the connection.</li>
+      </ul>
+      <p>These changes are being evaluated together. A reduction in stress alone does not establish a better strength-to-weight ratio; mass, displacement, and comparable analysis settings still need to be assessed.</p>
+    </section>
+    <section class="project-section" aria-labelledby="results">
+      <h2 id="results">Simulation Results</h2>
+      <h3>Local stress comparison near the chassis bushing</h3>
+      <p>I used the SolidWorks Probe tool to record five von Mises stress values at approximately corresponding locations near the main chassis bushing in each design.</p>
+      <div class="results-table-wrap"><table class="results-table"><caption>Five-point local comparison documented October 14, 2026</caption><thead><tr><th scope="col">Measure</th><th scope="col">V1</th><th scope="col">V2</th></tr></thead><tbody><tr><th scope="row">Average measured local stress</th><td>341.21 MPa</td><td>281.15 MPa</td></tr><tr><th scope="row">Difference from V1</th><td>Baseline</td><td>−60.07 MPa (17.6%)</td></tr></tbody></table></div>
+      <p>The journal reports the same simulated loading conditions for this comparison. The result suggests a local improvement in V2, but the probes represent a small region and do not establish overall structural performance.</p>
+      <h3>Latest comparison: verification in progress</h3>
+      <p>The October 18 entry records an approximately 79.9% lower maximum von Mises stress for V2 in a later loading case. I am keeping this separate from the five-point comparison: the selected loading surfaces and boundary conditions still need verification before attributing the difference to geometry.</p>
+      <p class="analysis-note"><strong>Current scope:</strong> a CAD and simulation study. Mesh convergence, displacement, factor of safety, and physical performance have not yet been established.</p>
+    </section>
+    <section class="project-section" aria-labelledby="process">
+      <h2 id="process">Design &amp; Development Log</h2>
+      <p>A condensed record of the research and decisions behind the current design.</p>
+      <ol class="development-log">
+        <li><span class="log-date">June 20–29, 2026</span><h3>Research the system</h3><p>Studied control arms, bushings, ball joints, and different suspension layouts. Researched iron, steel, and manufacturing processes to build a foundation for material selection.</p></li>
+        <li><span class="log-date">July 15–17, 2026</span><h3>Build and test the first model</h3><p>Created the baseline geometry and ran an initial static FEA study. Identified stress near the bushing and recognized the need for more representative loads and smoother geometry.</p></li>
+        <li><span class="log-date">July 22–31, 2026</span><h3>Connect the results to mechanics</h3><p>Studied bending, torsion, deflection, and material failure modes. Compared ribs, curved sections, hollow designs, and box sections as ways to improve stiffness and load distribution.</p></li>
+        <li><span class="log-date">October 3–7, 2026</span><h3>Develop simulation skills</h3><p>Used a simple block model to explore SolidWorks study types and learn how to interpret results before returning to the control arm.</p></li>
+        <li><span class="log-date">October 14–18, 2026</span><h3>Evaluate the redesign</h3><p>Documented V2 geometry changes, compared local probe values, and investigated the influence of ball-joint wall thickness and hole geometry on the latest stress results.</p></li>
+      </ol>
+    </section>
+    <section class="project-section" aria-labelledby="next">
+      <h2 id="next">Next Steps</h2>
+      <ul><li>Verify equivalent load directions, selected surfaces, materials, and fixtures between V1 and V2.</li><li>Perform a mesh-convergence check around the bushing and ball-joint regions.</li><li>Compare displacement, maximum stress, factor of safety, and mass alongside local stress measurements.</li><li>Refine representative suspension loading cases and evaluate further design changes.</li></ul>
+    </section>
+    <section class="project-section" aria-labelledby="gallery">
+      <h2 id="gallery">Project Gallery</h2>
+      <div class="project-gallery">
+        <img loading="lazy" decoding="async" src="../assets/images/control-arm-3.png" alt="Control arm static von Mises stress plot in SolidWorks">
+        <img loading="lazy" decoding="async" src="../assets/images/control-arm-4.png" alt="Control arm displacement study shown in SolidWorks Simulation">
+        <img loading="lazy" decoding="async" src="../assets/images/control-arm-5.png" alt="Control arm stress result with probe measurements">
+        <img loading="lazy" decoding="async" src="../assets/images/control-arm-6.png" alt="Control arm topology study screenshot from the development journal">
+      </div>
+      <p class="gallery-hint">Screenshots from different studies in the development journal; plot scales and study settings vary.</p>
+    </section>
+    <a class="next-project" href="robo-masters.html"><span>Explore another project</span><strong>RoboMasters Standard Robot →</strong></a>
+  </main>
+</body>
+</html>
