@@ -1,0 +1,20 @@
+/* Authoritative hover timing, loaded after the visual theme. */
+.project-card,.about-card,.experience-card,.contact-card,.project-stat,.gallery-button,.next-project,.btn {
+  translate:none;
+  transform:translate3d(0,0,0);
+  transition-property:transform,box-shadow,border-color,background-color;
+  transition-duration:1.15s,1.15s,.75s,.75s;
+  transition-timing-function:cubic-bezier(.45,0,.25,1);
+  transition-delay:0s;
+}
+@media (hover:hover) {
+ .project-card:hover,.project-card:focus-within { transform:translate3d(0,-10px,0); }
+ .about-card:hover,.experience-card:hover,.contact-card:hover,.project-stat:hover,.gallery-button:hover,.next-project:hover { transform:translate3d(0,-7px,0); }
+ .btn:hover { transform:translate3d(0,-5px,0); }
+}
+.contact-card:focus-visible,.gallery-button:focus-visible,.next-project:focus-visible { transform:translate3d(0,-7px,0); }
+@media (prefers-reduced-motion:reduce) {
+ .project-card,.about-card,.experience-card,.contact-card,.project-stat,.gallery-button,.next-project,.btn,
+ .project-card:hover,.project-card:focus-within,.about-card:hover,.experience-card:hover,.contact-card:hover,.project-stat:hover,.gallery-button:hover,.next-project:hover,.btn:hover,
+ .contact-card:focus-visible,.gallery-button:focus-visible,.next-project:focus-visible { transform:none; transition:none; }
+}
