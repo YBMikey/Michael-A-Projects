@@ -20,7 +20,7 @@ if ('IntersectionObserver' in window) {
           entry.target.animate([
             { opacity: 0, transform: 'translateY(16px)' },
             { opacity: 1, transform: 'translateY(0)' }
-          ], { duration: 550, delay: Math.min(index, 3) * 65, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'backwards' });
+          ], { duration: 750, delay: Math.min(index, 3) * 80, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'backwards' });
         }
         observer.unobserve(entry.target);
       });
@@ -122,11 +122,11 @@ window.addEventListener('resize', updateScroll);
 window.addEventListener('load', updateScroll, { once: true });
 updateScroll();
 
-// Fine-pointer effects use one shared animation loop, stop when settled,
+// Background-only pointer motion uses one shared loop, stops when settled,
 // and reset immediately for reduced motion, tab hiding, or coarse pointers.
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-const fluidSurfaces = [...document.querySelectorAll('.hero, .project-card, .contact-card, .btn, .next-project')];
+const fluidSurfaces = [...document.querySelectorAll('.hero')];
 const fluidStates = fluidSurfaces.map(element => ({ element, x: .5, y: .5, targetX: .5, targetY: .5, vx: 0, vy: 0, active: false }));
 let fluidFrame = 0;
 let lastFluidTime = 0;
