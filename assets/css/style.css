@@ -264,3 +264,28 @@ footer p { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap
  .hero-emphasis { color:var(--accent); background:none; }
 }
 @media (forced-colors:active) { .hero-emphasis { color:CanvasText; background:none; } .hero-atmosphere { display:none; } }
+
+/* Soft inertia, liquid forms, and shared transition timing. */
+:root { --fluid-ease:cubic-bezier(.16,1,.3,1); }
+.hero-atmosphere { transform:translate3d(0,var(--hero-drift,0px),0); }
+.ambient-orb { animation-name:ambient-drift,liquid-form; animation-duration:18s,24s; animation-timing-function:cubic-bezier(.45,0,.55,1),ease-in-out; animation-iteration-count:infinite; animation-direction:alternate; }
+.orb-teal { animation-duration:22s,29s; animation-delay:-7s,-11s; }
+.orb-violet { animation-duration:25s,32s; animation-delay:-12s,-17s; }
+@keyframes liquid-form { 0% { border-radius:42% 58% 66% 34% / 44% 38% 62% 56%; } 50% { border-radius:62% 38% 43% 57% / 58% 66% 34% 42%; } 100% { border-radius:48% 52% 32% 68% / 64% 35% 65% 36%; } }
+.ambient-paused .ambient-orb,.ambient-paused .orbit-outer,.ambient-paused .orbit-inner { animation-play-state:paused; }
+.btn,.next-project { translate:0 0; transition:translate .7s var(--fluid-ease),transform .7s var(--fluid-ease),box-shadow .6s var(--fluid-ease),border-color .4s,background .3s; }
+.contact-card { transition:transform .7s var(--fluid-ease),box-shadow .7s var(--fluid-ease),border-color .4s; }
+.project-card { transition:transform .75s var(--fluid-ease),box-shadow .75s var(--fluid-ease),border-color .4s; }
+.hero-content > * { animation-duration:1s; animation-timing-function:var(--fluid-ease); }
+.hero-content > :nth-child(2) { animation-delay:.12s; }
+.hero-content > :nth-child(3) { animation-delay:.24s; }
+.hero-content > :nth-child(4) { animation-delay:.36s; }
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+ .btn.pointer-active,.next-project.pointer-active { translate:var(--float-x,0px) var(--float-y,0px); transition-duration:.12s,.7s,.6s,.4s,.3s; }
+ .project-card.pointer-active { transition:transform .12s linear,box-shadow .7s var(--fluid-ease),border-color .4s; }
+}
+@media (prefers-reduced-motion:reduce) {
+ .hero-atmosphere { transform:none; }
+ .btn,.next-project { translate:none; }
+ .ambient-orb { border-radius:50%; animation:none!important; }
+}

@@ -38,13 +38,26 @@ if (gallery && typeof HTMLDialogElement !== 'undefined') {
   dialog.innerHTML = '<div class="viewer-toolbar"><span class="viewer-count" aria-live="polite"></span><div class="viewer-actions"><button type="button" data-action="previous" aria-label="Previous image">←</button><button type="button" data-action="next" aria-label="Next image">→</button><button type="button" data-action="close">Close ×</button></div></div><img class="viewer-image" alt=""><p class="viewer-caption"></p>';
   document.body.append(dialog);
   let current = 0;
+  let imageRequest = 0;
   const show = index => {
     current = (index + images.length) % images.length;
     const source = images[current];
+    const request = ++imageRequest;
+    const count = `${current + 1} / ${images.length}`;
     const enlarged = dialog.querySelector('.viewer-image');
-    enlarged.src = source.src; enlarged.alt = source.alt;
-    dialog.querySelector('.viewer-count').textContent = `${current + 1} / ${images.length}`;
-    dialog.querySelector('.viewer-caption').textContent = source.alt;
+    const incoming = new Image(); incoming.src = source.src;
+    const commitImage = () => {
+      if (request !== imageRequest) return;
+      enlarged.getAnimations?.().forEach(animation => animation.cancel());
+      enlarged.src = source.src; enlarged.alt = source.alt;
+      dialog.querySelector('.viewer-count').textContent = count;
+      dialog.querySelector('.viewer-caption').textContent = source.alt;
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && enlarged.animate) {
+        enlarged.animate([{ opacity: 0, transform: 'translateY(8px) scale(.985)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], { duration: 380, easing: 'cubic-bezier(.16,1,.3,1)' });
+      }
+    };
+    if (incoming.decode) incoming.decode().then(commitImage, commitImage);
+    else commitImage();
   };
   const hint = document.createElement('p');
   hint.className = 'gallery-hint'; hint.textContent = 'Select a photo to view it full size. Use the arrow keys to browse.';
@@ -70,7 +83,7 @@ if (gallery && typeof HTMLDialogElement !== 'undefined') {
     if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
     if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
   });
-  dialog.addEventListener('close', () => { document.body.style.overflow = ''; });
+  dialog.addEventListener('close', () => { imageRequest += 1; document.body.style.overflow = ''; });
 }
 
 // One scheduled update per frame keeps scroll feedback light, including on mobile.
@@ -92,6 +105,7 @@ let scrollQueued = false;
 const updateScroll = () => {
   scrollQueued = false;
   const offset = window.scrollY;
+  document.querySelector('.hero-atmosphere')?.style.setProperty('--hero-drift', `${Math.min(80, offset * .12)}px`);
   const range = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   progress.style.transform = `scaleX(${range ? Math.min(1, Math.max(0, offset / range)) : 0})`;
   document.querySelector('.navbar')?.classList.toggle('scrolled', offset > 24);
@@ -112,24 +126,33 @@ updateScroll();
 // and reset immediately for reduced motion, tab hiding, or coarse pointers.
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-const fluidSurfaces = [...document.querySelectorAll('.hero, .project-card, .contact-card')];
-const fluidStates = fluidSurfaces.map(element => ({ element, x: .5, y: .5, targetX: .5, targetY: .5, active: false }));
+const fluidSurfaces = [...document.querySelectorAll('.hero, .project-card, .contact-card, .btn, .next-project')];
+const fluidStates = fluidSurfaces.map(element => ({ element, x: .5, y: .5, targetX: .5, targetY: .5, vx: 0, vy: 0, active: false }));
 let fluidFrame = 0;
+let lastFluidTime = 0;
 const canAnimate = () => !motionPreference.matches && precisePointer.matches && !document.hidden;
-const runFluidFrame = () => {
+const runFluidFrame = timestamp => {
   fluidFrame = 0;
-  if (!canAnimate()) return;
+  if (!canAnimate()) { lastFluidTime = 0; return; }
+  const dt = lastFluidTime ? Math.min(.032, Math.max(.004, (timestamp - lastFluidTime) / 1000)) : 1 / 60;
+  lastFluidTime = timestamp;
   let unsettled = false;
   fluidStates.forEach(state => {
     const dx = state.targetX - state.x, dy = state.targetY - state.y;
-    state.x += dx * .12; state.y += dy * .12;
-    if (Math.abs(dx) + Math.abs(dy) > .001) unsettled = true;
+    state.vx = (state.vx + dx * 180 * dt) * Math.exp(-18 * dt);
+    state.vy = (state.vy + dy * 180 * dt) * Math.exp(-18 * dt);
+    state.x += state.vx * dt; state.y += state.vy * dt;
+    if (Math.abs(dx) + Math.abs(dy) + Math.abs(state.vx) + Math.abs(state.vy) > .001) unsettled = true;
+    else { state.x = state.targetX; state.y = state.targetY; state.vx = state.vy = 0; }
     state.element.style.setProperty('--pointer-x', `${(state.x * 100).toFixed(2)}%`);
     state.element.style.setProperty('--pointer-y', `${(state.y * 100).toFixed(2)}%`);
     state.element.style.setProperty('--tilt-x', `${((.5 - state.y) * 2.4).toFixed(2)}deg`);
     state.element.style.setProperty('--tilt-y', `${((state.x - .5) * 2.4).toFixed(2)}deg`);
+    state.element.style.setProperty('--float-x', `${((state.x - .5) * 8).toFixed(2)}px`);
+    state.element.style.setProperty('--float-y', `${((state.y - .5) * 6).toFixed(2)}px`);
   });
   if (unsettled) fluidFrame = window.requestAnimationFrame(runFluidFrame);
+  else lastFluidTime = 0;
 };
 const queueFluidFrame = () => { if (!fluidFrame && canAnimate()) fluidFrame = window.requestAnimationFrame(runFluidFrame); };
 fluidStates.forEach(state => {
@@ -146,14 +169,23 @@ fluidStates.forEach(state => {
 });
 const resetFluid = () => {
   if (fluidFrame) window.cancelAnimationFrame(fluidFrame);
-  fluidFrame = 0;
+  fluidFrame = 0; lastFluidTime = 0;
   fluidStates.forEach(state => {
-    state.x = state.y = state.targetX = state.targetY = .5; state.active = false;
+    state.x = state.y = state.targetX = state.targetY = .5; state.active = false; state.vx = state.vy = 0;
     state.element.classList.remove('pointer-active');
-    ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y'].forEach(name => state.element.style.removeProperty(name));
+    ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y', '--float-x', '--float-y'].forEach(name => state.element.style.removeProperty(name));
   });
   document.documentElement.classList.toggle('motion-paused', document.hidden);
 };
 motionPreference.addEventListener('change', resetFluid);
 precisePointer.addEventListener('change', resetFluid);
 document.addEventListener('visibilitychange', resetFluid);
+
+// Pause decorative loops when the introduction leaves the viewport.
+const atmosphere = document.querySelector('.hero-atmosphere');
+if (atmosphere && 'IntersectionObserver' in window) {
+  const atmosphereObserver = new IntersectionObserver(entries => {
+    atmosphere.classList.toggle('ambient-paused', !entries[0].isIntersecting);
+  });
+  atmosphereObserver.observe(atmosphere);
+}
