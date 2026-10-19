@@ -107,3 +107,53 @@ window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = tr
 window.addEventListener('resize', updateScroll);
 window.addEventListener('load', updateScroll, { once: true });
 updateScroll();
+
+// Fine-pointer effects use one shared animation loop, stop when settled,
+// and reset immediately for reduced motion, tab hiding, or coarse pointers.
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const precisePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+const fluidSurfaces = [...document.querySelectorAll('.hero, .project-card, .contact-card')];
+const fluidStates = fluidSurfaces.map(element => ({ element, x: .5, y: .5, targetX: .5, targetY: .5, active: false }));
+let fluidFrame = 0;
+const canAnimate = () => !motionPreference.matches && precisePointer.matches && !document.hidden;
+const runFluidFrame = () => {
+  fluidFrame = 0;
+  if (!canAnimate()) return;
+  let unsettled = false;
+  fluidStates.forEach(state => {
+    const dx = state.targetX - state.x, dy = state.targetY - state.y;
+    state.x += dx * .12; state.y += dy * .12;
+    if (Math.abs(dx) + Math.abs(dy) > .001) unsettled = true;
+    state.element.style.setProperty('--pointer-x', `${(state.x * 100).toFixed(2)}%`);
+    state.element.style.setProperty('--pointer-y', `${(state.y * 100).toFixed(2)}%`);
+    state.element.style.setProperty('--tilt-x', `${((.5 - state.y) * 2.4).toFixed(2)}deg`);
+    state.element.style.setProperty('--tilt-y', `${((state.x - .5) * 2.4).toFixed(2)}deg`);
+  });
+  if (unsettled) fluidFrame = window.requestAnimationFrame(runFluidFrame);
+};
+const queueFluidFrame = () => { if (!fluidFrame && canAnimate()) fluidFrame = window.requestAnimationFrame(runFluidFrame); };
+fluidStates.forEach(state => {
+  state.element.addEventListener('pointermove', event => {
+    if (!canAnimate()) return;
+    const bounds = state.element.getBoundingClientRect();
+    state.targetX = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
+    state.targetY = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
+    state.element.classList.add('pointer-active'); state.active = true; queueFluidFrame();
+  }, { passive: true });
+  const leave = () => { state.targetX = .5; state.targetY = .5; state.active = false; state.element.classList.remove('pointer-active'); queueFluidFrame(); };
+  state.element.addEventListener('pointerleave', leave);
+  state.element.addEventListener('pointercancel', leave);
+});
+const resetFluid = () => {
+  if (fluidFrame) window.cancelAnimationFrame(fluidFrame);
+  fluidFrame = 0;
+  fluidStates.forEach(state => {
+    state.x = state.y = state.targetX = state.targetY = .5; state.active = false;
+    state.element.classList.remove('pointer-active');
+    ['--pointer-x', '--pointer-y', '--tilt-x', '--tilt-y'].forEach(name => state.element.style.removeProperty(name));
+  });
+  document.documentElement.classList.toggle('motion-paused', document.hidden);
+};
+motionPreference.addEventListener('change', resetFluid);
+precisePointer.addEventListener('change', resetFluid);
+document.addEventListener('visibilitychange', resetFluid);
