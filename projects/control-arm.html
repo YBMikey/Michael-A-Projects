@@ -4,36 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suspension Control Arm | Michael Asemota</title>
-  <meta name="description" content="An ongoing SolidWorks control arm design study: suspension research, CAD iterations, static FEA, and V1/V2 stress comparisons.">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20261019-2045">
-  <script src="../assets/js/site.js?v=20261019-2045" defer></script>
-  <link rel="stylesheet" href="../assets/css/motion.css?v=20261019-2045">
+  <meta name="description" content="Four SolidWorks control arm design iterations, final V4 simulation results, and a planned manufacturing feasibility study.">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261029-results">
+  <script src="../assets/js/site.js?v=20261029-results" defer></script>
+  <link rel="stylesheet" href="../assets/css/motion.css?v=20261029-results">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <main id="main" class="container project-page">
     <a class="back-link" href="../index.html#projects">← Back to Projects</a>
     <nav class="project-nav" aria-label="Project sections">
-      <a href="#overview">Overview</a><a href="#design">Design iterations</a><a href="#results">Results</a><a href="#process">Development log</a><a href="#next">Next steps</a><a href="#gallery">Gallery</a>
+      <a href="#overview">Overview</a><a href="#design">Design iterations</a><a href="#results">Results</a><a href="#process">Development log</a><a href="#next">Part 2: Manufacturing</a><a href="#gallery">Gallery</a>
     </nav>
     <div class="project-hero">
       <div class="project-hero-image"><img src="../assets/images/control-arm-3.png" alt="SolidWorks static stress plot of the control arm" decoding="async"></div>
       <div class="project-hero-content">
-        <p class="project-label">Mechanical Design &amp; Simulation · In progress</p>
+        <p class="project-label">Mechanical Design &amp; Simulation · Part 1 Complete</p>
         <h1>Suspension Control Arm</h1>
-        <p class="project-description">An independent design study of a Mercedes-Benz S550 suspension link, combining suspension research, iterative CAD modeling, and finite element analysis to understand how geometry affects structural performance.</p>
+        <p class="project-description">Four CAD iterations of a front lower control arm for a 2007 Mercedes-Benz S550, combining topology-guided redesign and finite element analysis. V4 was selected for improved simulated performance at the same mass as the original design.</p>
         <div class="project-stats">
           <div class="project-stat"><div class="project-stat-title">My Role</div><div class="project-stat-value">Independent Design &amp; Analysis</div></div>
           <div class="project-stat"><div class="project-stat-title">Tools</div><div class="project-stat-value">SolidWorks &amp; SolidWorks Simulation</div></div>
-          <div class="project-stat"><div class="project-stat-title">Project Status</div><div class="project-stat-value">June 2026–Present · V2 evaluation</div></div>
+          <div class="project-stat"><div class="project-stat-title">Project Status</div><div class="project-stat-value">Part 1 complete · Manufacturing next</div></div>
         </div>
       </div>
     </div>
     <section class="project-section" aria-labelledby="overview">
       <h2 id="overview">Project Overview</h2>
       <p>I started this project to move from understanding how automotive suspension works to designing and evaluating a component myself. The focus is a lower control arm link for a Mercedes-Benz S550, connecting the chassis bushing to the wheel-side ball joint.</p>
-      <p>The project follows an iterative workflow: research the suspension and material options, build a CAD model, examine its response to an applied load, and revise the geometry around the areas that need attention. The current work compares the original V1 model with a revised V2.</p>
-      <div class="project-tags"><span class="project-tag">Mechanical Design</span><span class="project-tag">Parametric CAD</span><span class="project-tag">Static FEA</span><span class="project-tag">Stress Analysis</span><span class="project-tag">Material Research</span><span class="project-tag">Design Iteration</span></div>
+      <p>The project follows an iterative workflow: research the suspension and material options, build a CAD model, examine its response to an applied load, and revise the geometry around the areas that need attention. Part 1 is now complete: V1–V4 have been compared for mass, stress, displacement, factor of safety, fatigue life, and first natural frequency. Part 2 will evaluate how the selected design could be manufactured.</p>
+      <div class="project-tags"><span class="project-tag">Mechanical Design</span><span class="project-tag">Parametric CAD</span><span class="project-tag">Static FEA</span><span class="project-tag">Stress Analysis</span><span class="project-tag">Material Research</span><span class="project-tag">Design Iteration</span><span class="project-tag">Topology Optimization</span><span class="project-tag">Fatigue &amp; Frequency Analysis</span></div>
     </section>
     <section class="project-section" aria-labelledby="design">
       <h2 id="design">Design Iterations</h2>
@@ -46,17 +46,41 @@
         <li><strong>Revised the ball-joint region:</strong> increased the surrounding wall thickness, refined the bore diameter, and replaced the blind-hole arrangement with a through-hole.</li>
         <li><strong>Removed underside material:</strong> explored a more efficient mounting geometry while retaining support around the connection.</li>
       </ul>
-      <p>These changes are being evaluated together. A reduction in stress alone does not establish a better strength-to-weight ratio; mass, displacement, and comparable analysis settings still need to be assessed.</p>
+      <h3>V3: Topology-guided weight reduction</h3>
+      <p>I introduced double-sided recesses along the central length to create an I-beam-like section, retaining outer material to resist bending. I also reduced the ball-joint housing diameter from 2.6 to 2.4 inches and a surrounding mounting feature from 1.50 to 1.25 inches.</p>
+      <p>Mass decreased from 1.60 lb to 1.36 lb. An early local probe comparison showed increased stress after material removal, highlighting the trade-off between weight savings and reinforcement.</p>
+      <h3>V4: Restoring reinforcement where it matters</h3>
+      <p>I restored material near the chassis-bushing transition while retaining selected weight-saving features from V3. I also investigated a bushing-hole fillet that produced unusually high stresses at the fixed-fixture boundary.</p>
+      <p>V4 finished at 1.41 lb, matching V1. It was selected as the preferred design because it improved the reported stress, displacement, fatigue-life, and frequency results without increasing baseline mass.</p>
     </section>
     <section class="project-section" aria-labelledby="results">
       <h2 id="results">Simulation Results</h2>
-      <h3>Local stress comparison near the chassis bushing</h3>
-      <p>I used the SolidWorks Probe tool to record five von Mises stress values at approximately corresponding locations near the main chassis bushing in each design.</p>
-      <div class="results-table-wrap"><table class="results-table"><caption>Five-point local comparison documented October 14, 2026</caption><thead><tr><th scope="col">Measure</th><th scope="col">V1</th><th scope="col">V2</th></tr></thead><tbody><tr><th scope="row">Average measured local stress</th><td>341.21 MPa</td><td>281.15 MPa</td></tr><tr><th scope="row">Difference from V1</th><td>Baseline</td><td>−60.07 MPa (17.6%)</td></tr></tbody></table></div>
-      <p>The journal reports the same simulated loading conditions for this comparison. The result suggests a local improvement in V2, but the probes represent a small region and do not establish overall structural performance.</p>
-      <h3>Latest comparison: verification in progress</h3>
-      <p>The October 18 entry records an approximately 79.9% lower maximum von Mises stress for V2 in a later loading case. I am keeping this separate from the five-point comparison: the selected loading surfaces and boundary conditions still need verification before attributing the difference to geometry.</p>
-      <p class="analysis-note"><strong>Current scope:</strong> a CAD and simulation study. Mesh convergence, displacement, factor of safety, and physical performance have not yet been established.</p>
+      <p>The final comparison, documented October 28, supersedes the earlier V1/V2 screening studies. All values below are reported simulation outputs from the project journal.</p>
+      <div class="project-stats result-highlights">
+        <div class="project-stat"><div class="project-stat-title">V4 vs. V1 · Representative stress</div><div class="project-stat-value">17.2% lower</div></div>
+        <div class="project-stat"><div class="project-stat-title">V4 vs. V1 · Maximum displacement</div><div class="project-stat-value">34.2% lower</div></div>
+        <div class="project-stat"><div class="project-stat-title">V4 vs. V1 · Mass</div><div class="project-stat-value">Unchanged at 1.41 lb</div></div>
+      </div>
+      <div class="results-table-wrap"><table class="results-table">
+        <caption>Final V1–V4 design comparison · October 28, 2026</caption>
+        <thead><tr><th scope="col">Measure</th><th scope="col">V1</th><th scope="col">V2</th><th scope="col">V3</th><th scope="col">V4 · Selected</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Mass (lb)</th><td>1.41</td><td>1.60</td><td>1.36</td><td>1.41</td></tr>
+          <tr><th scope="row">Representative bushing-region von Mises stress (MPa)</th><td>117</td><td>94.3*</td><td>113.4*</td><td>96.85</td></tr>
+          <tr><th scope="row">Maximum displacement (mm)</th><td>6.941</td><td>4.448</td><td>5.754</td><td>4.567</td></tr>
+          <tr><th scope="row">Reported minimum factor of safety</th><td>1.796</td><td>2.900</td><td>2.412</td><td>2.629</td></tr>
+          <tr><th scope="row">Predicted minimum fatigue life (cycles)</th><td>993,505</td><td>Infinite**</td><td>6,300,000</td><td>15,116,000</td></tr>
+          <tr><th scope="row">First natural frequency (Hz)</th><td>165.25</td><td>189.42</td><td>184.39</td><td>219.83</td></tr>
+        </tbody>
+      </table></div>
+      <p class="gallery-hint">* The journal flags singularities in V2 and V3. Stress values describe the selected bushing region, rather than unrestricted global peak stress. ** “Infinite” is the reported fatigue solver result under the modeled assumptions, not a claim of unlimited physical life.</p>
+      <h3>Why V4 was selected</h3>
+      <p>V4 reduced representative stress from 117 to 96.85 MPa and displacement from 6.941 to 4.567 mm at the same 1.41 lb mass as V1. Its first natural frequency increased by 33.0%, and predicted minimum fatigue life increased to approximately 15.1 million cycles.</p>
+      <p>V2 retained slightly lower displacement and a higher reported factor of safety, but weighed 1.60 lb. V4 was 11.9% lighter than V2 with similar simulated static stiffness, giving the preferred balance of performance and material efficiency.</p>
+      <h3>Investigating the fixture-boundary stress spike</h3>
+      <p>During the fillet investigation, successive mesh refinements increased peak stress from approximately 288 to 588 to 639 MPa. The narrow concentration near the fixed bushing fixture suggested a possible stress singularity rather than a converged peak. Removing the fillet eliminated the extreme spike in that study.</p>
+      <p>I therefore considered representative stresses away from the suspected singularity when interpreting the designs. A realistic flexible-bushing model and further mesh-convergence work remain important verification steps.</p>
+      <p class="analysis-note"><strong>Scope of completion:</strong> Part 1 covers CAD development and comparative simulation. Results remain conditional on the modeled loads, materials, fixtures, and fatigue settings. Manufacturing feasibility and physical validation are not yet established.</p>
     </section>
     <section class="project-section" aria-labelledby="process">
       <h2 id="process">Design &amp; Development Log</h2>
@@ -67,21 +91,35 @@
         <li><span class="log-date">July 22–31, 2026</span><h3>Connect the results to mechanics</h3><p>Studied bending, torsion, deflection, and material failure modes. Compared ribs, curved sections, hollow designs, and box sections as ways to improve stiffness and load distribution.</p></li>
         <li><span class="log-date">October 3–7, 2026</span><h3>Develop simulation skills</h3><p>Used a simple block model to explore SolidWorks study types and learn how to interpret results before returning to the control arm.</p></li>
         <li><span class="log-date">October 14–18, 2026</span><h3>Evaluate the redesign</h3><p>Documented V2 geometry changes, compared local probe values, and investigated the influence of ball-joint wall thickness and hole geometry on the latest stress results.</p></li>
+        <li><span class="log-date">October 23–28, 2026</span><h3>Complete the four-version evaluation</h3><p>Developed the recessed V3 geometry, restored targeted reinforcement in V4, investigated mesh-sensitive fixture stresses, and compared static, fatigue, and frequency results. Selected V4 and completed Part 1.</p></li>
       </ol>
     </section>
     <section class="project-section" aria-labelledby="next">
-      <h2 id="next">Next Steps</h2>
-      <ul><li>Verify equivalent load directions, selected surfaces, materials, and fixtures between V1 and V2.</li><li>Perform a mesh-convergence check around the bushing and ball-joint regions.</li><li>Compare displacement, maximum stress, factor of safety, and mass alongside local stress measurements.</li><li>Refine representative suspension loading cases and evaluate further design changes.</li></ul>
+      <h2 id="next">Part 2: Manufacturing</h2>
+      <p>With the modeling and simulation phase complete, the next phase is to determine how the design could be made and whether that approach is practical and cost-effective. The items below are planned work, not completed manufacturing results.</p>
+      <div class="phase-grid">
+        <div class="phase-panel"><p class="phase-status complete">Part 1 · Complete</p><h3>3D Modeling &amp; Analysis</h3><p>Suspension research, CAD development, load calculations, simulation, design iteration, and final V1–V4 comparison.</p></div>
+        <div class="phase-panel"><p class="phase-status planned">Part 2 · Planned</p><h3>Manufacturing Feasibility</h3><p>Process planning, material selection, labor and cost estimates, tolerances, and inspection.</p></div>
+      </div>
+      <ol class="manufacturing-plan">
+        <li><strong>Manufacturing route:</strong> investigate how control arms are made and select a suitable production approach for this geometry.</li>
+        <li><strong>Material selection:</strong> compare candidate materials and assess whether an alternative offers a better balance of performance, manufacturability, and cost.</li>
+        <li><strong>Operations planning:</strong> identify required milling, drilling, and deburring steps and their labor requirements.</li>
+        <li><strong>Tolerances:</strong> define dimensional requirements for the bushing, ball-joint mounting features, and relevant interfaces.</li>
+        <li><strong>Inspection:</strong> plan how critical dimensions and manufacturing quality would be checked.</li>
+        <li><strong>Cost feasibility:</strong> estimate material, processing, and labor costs and evaluate economic viability before committing to a manufacturing plan.</li>
+      </ol>
     </section>
     <section class="project-section" aria-labelledby="gallery">
       <h2 id="gallery">Project Gallery</h2>
       <div class="project-gallery">
+        <img loading="lazy" decoding="async" src="../assets/images/control-arm-fatigue-v1.png" alt="V1 baseline fatigue-life plot with the lowest predicted life near the bushing transition">
         <img loading="lazy" decoding="async" src="../assets/images/control-arm-3.png" alt="Control arm static von Mises stress plot in SolidWorks">
         <img loading="lazy" decoding="async" src="../assets/images/control-arm-4.png" alt="Control arm displacement study shown in SolidWorks Simulation">
         <img loading="lazy" decoding="async" src="../assets/images/control-arm-5.png" alt="Control arm stress result with probe measurements">
         <img loading="lazy" decoding="async" src="../assets/images/control-arm-6.png" alt="Control arm topology study screenshot from the development journal">
       </div>
-      <p class="gallery-hint">Screenshots from different studies in the development journal; plot scales and study settings vary.</p>
+      <p class="gallery-hint">Development screenshots include the V1 baseline fatigue plot and earlier static, displacement, and topology studies. Plot scales and study settings vary; the final comparison is reported in the results table above.</p>
     </section>
     <a class="next-project" href="robo-masters.html"><span>Explore another project</span><strong>RoboMasters Standard Robot →</strong></a>
   </main>
