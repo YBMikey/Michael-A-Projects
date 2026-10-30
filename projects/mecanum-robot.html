@@ -20,6 +20,19 @@
   <meta property="og:description" content="Mechanical design, prototyping, controls, and system integration in Michael Asemota’s Arduino mecanum wheel robot.">
   <meta property="og:url" content="https://ybmikey.github.io/Michael-A-Projects/projects/mecanum-robot.html">
   <link rel="canonical" href="https://ybmikey.github.io/Michael-A-Projects/projects/mecanum-robot.html">
+<style>
+/* Project image viewer — does not alter gallery layout */
+main img { cursor: zoom-in; }
+.image-viewer {position:fixed;inset:0;z-index:9999;background:rgba(9,14,26,.94);display:flex;align-items:center;justify-content:center;padding:64px 22px 58px;box-sizing:border-box}
+.image-viewer[hidden]{display:none}
+.image-viewer img{max-width:100%;max-height:100%;object-fit:contain;transform:scale(var(--viewer-scale,1));transition:transform .18s ease;cursor:zoom-in;user-select:none}
+.image-viewer button{position:absolute;z-index:2;border:1px solid rgba(255,255,255,.3);background:rgba(20,30,49,.8);color:white;border-radius:12px;padding:9px 14px;font-size:22px;cursor:pointer}
+.image-viewer .viewer-close{right:18px;top:16px}
+.image-viewer .viewer-controls{position:absolute;bottom:12px;display:flex;gap:10px}
+.image-viewer .viewer-controls button{position:static}
+.image-viewer .viewer-label{position:absolute;top:22px;left:22px;right:75px;color:#fff;font:14px system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(prefers-reduced-motion:reduce){.image-viewer img{transition:none}}
+</style>
 </head>
 
 <body>
@@ -300,6 +313,41 @@
     <a class="next-project" href="control-arm.html"><span>Explore another project</span><strong>Suspension Control Arm →</strong></a>
   </main>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const photos = [...document.querySelectorAll('main img')].filter(img => !img.closest('a'));
+  if (!photos.length) return;
+  const viewer = document.createElement('div');
+  viewer.className = 'image-viewer';
+  viewer.hidden = true;
+  viewer.setAttribute('role','dialog');
+  viewer.setAttribute('aria-modal','true');
+  viewer.setAttribute('aria-label','Enlarged project image');
+  viewer.innerHTML = '<span class="viewer-label"></span><button class="viewer-close" aria-label="Close image viewer">×</button><img alt=""><div class="viewer-controls"><button class="viewer-out" aria-label="Zoom out">−</button><button class="viewer-reset" aria-label="Reset zoom">Reset</button><button class="viewer-in" aria-label="Zoom in">+</button></div>';
+  document.body.appendChild(viewer);
+  const full = viewer.querySelector('img');
+  const label = viewer.querySelector('.viewer-label');
+  let scale = 1, previousFocus;
+  const zoom = value => {scale=Math.max(1,Math.min(5,value));full.style.setProperty('--viewer-scale',scale);full.style.cursor=scale>1?'zoom-out':'zoom-in'};
+  const close = () => {viewer.hidden=true;document.body.style.overflow='';previousFocus?.focus()};
+  photos.forEach(img => {
+    img.tabIndex=0;
+    img.setAttribute('role','button');
+    img.setAttribute('aria-label','Enlarge image: '+(img.alt||'Project image'));
+    const open = () => {previousFocus=document.activeElement;full.src=img.currentSrc||img.src;full.alt=img.alt||'Project image';label.textContent=img.closest('figure')?.querySelector('figcaption')?.textContent||img.alt||'Project image';zoom(1);viewer.hidden=false;document.body.style.overflow='hidden';viewer.querySelector('.viewer-close').focus()};
+    img.addEventListener('click',open);
+    img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+  });
+  viewer.querySelector('.viewer-close').addEventListener('click',close);
+  viewer.querySelector('.viewer-in').addEventListener('click',()=>zoom(scale+.5));
+  viewer.querySelector('.viewer-out').addEventListener('click',()=>zoom(scale-.5));
+  viewer.querySelector('.viewer-reset').addEventListener('click',()=>zoom(1));
+  full.addEventListener('click',()=>zoom(scale===1?2:1));
+  viewer.addEventListener('click',e=>{if(e.target===viewer)close()});
+  viewer.addEventListener('wheel',e=>{e.preventDefault();zoom(scale+(e.deltaY<0?.25:-.25))},{passive:false});
+  document.addEventListener('keydown',e=>{if(viewer.hidden)return;if(e.key==='Escape')close();if(e.key==='+'||e.key==='=')zoom(scale+.5);if(e.key==='-')zoom(scale-.5);if(e.key==='Tab'){const buttons=[...viewer.querySelectorAll('button')];const i=buttons.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();buttons.at(-1).focus()}else if(!e.shiftKey&&i===buttons.length-1){e.preventDefault();buttons[0].focus()}}});
+});
+</script>
 </body>
 
 </html>
