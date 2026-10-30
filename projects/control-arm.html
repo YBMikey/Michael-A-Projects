@@ -15,6 +15,10 @@
   <meta property="og:description" content="Four SolidWorks control arm design iterations, final V4 simulation results, and a planned manufacturing feasibility study.">
   <meta property="og:url" content="https://ybmikey.github.io/Michael-A-Projects/projects/control-arm.html">
   <link rel="canonical" href="https://ybmikey.github.io/Michael-A-Projects/projects/control-arm.html">
+
+<style>
+.iteration-visuals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:1.1rem 0 2rem}.iteration-figure{margin:0;min-width:0;border:1px solid rgba(140,160,190,.24);border-radius:16px;overflow:hidden;background:rgba(125,145,170,.07)}.iteration-figure img{display:block;width:100%;height:220px;object-fit:contain;padding:.6rem;box-sizing:border-box;transition:transform .45s ease}.iteration-figure:hover img{transform:scale(1.035)}.iteration-figure figcaption{padding:.7rem 1rem;font-size:.87rem;line-height:1.45}.gallery-overview{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}@media(max-width:600px){.iteration-figure img{height:190px}}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -24,7 +28,7 @@
       <a href="#overview">Overview</a><a href="#design">Design iterations</a><a href="#results">Results</a><a href="#process">Development log</a><a href="#next">Part 2: Manufacturing</a><a href="#gallery">Gallery</a>
     </nav>
     <div class="project-hero">
-      <div class="project-hero-image"><img src="../assets/images/control-arm-3.png" alt="SolidWorks static stress plot of the control arm" decoding="async"></div>
+      <div class="project-hero-image"><img src="../assets/images/control-arm-hero.png" alt="Hero render of the suspension control arm" decoding="async"></div>
       <div class="project-hero-content">
         <p class="project-label">Mechanical Design &amp; Simulation · Part 1 Complete</p>
         <h1>Suspension Control Arm</h1>
@@ -45,8 +49,14 @@
     <section class="project-section" aria-labelledby="design">
       <h2 id="design">Design Iterations</h2>
       <h3>V1: Establishing a baseline</h3>
+<div class="iteration-visuals"><figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v1.jpg" alt="V1 · Baseline CAD geometry"><figcaption>V1 · Baseline CAD geometry</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v1-top.jpg" alt="V1 · Top view"><figcaption>V1 · Top view</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v1-stress.jpg" alt="V1 · Static stress simulation"><figcaption>V1 · Static stress simulation</figcaption></figure></div>
       <p>The initial model established the general shape and mounting features. In the first static study, I fixed the bushing mounting location and applied a perpendicular load at the ball-joint location. The results highlighted stress near the bushing support and prompted further research into realistic loading, bending, and reinforcement.</p>
       <h3>V2: Refining the load path</h3>
+<div class="iteration-visuals"><figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v2.jpg" alt="V2 · Reinforced CAD geometry"><figcaption>V2 · Reinforced CAD geometry</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v2-top.jpg" alt="V2 · Top view"><figcaption>V2 · Top view</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v2-stress.jpg" alt="V2 · Static stress simulation"><figcaption>V2 · Static stress simulation</figcaption></figure></div>
       <ul>
         <li><strong>Increased section width:</strong> changed the documented width from 0.8 to 1.0 inch, adding material in areas identified for reinforcement.</li>
         <li><strong>Added fillets:</strong> rounded sharp transitions to encourage smoother stress distribution.</li>
@@ -54,9 +64,14 @@
         <li><strong>Removed underside material:</strong> explored a more efficient mounting geometry while retaining support around the connection.</li>
       </ul>
       <h3>V3: Topology-guided weight reduction</h3>
+<div class="iteration-visuals"><figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v3.jpg" alt="V3 · Weight-reduced CAD geometry"><figcaption>V3 · Weight-reduced CAD geometry</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v3-top.jpg" alt="V3 · Top view"><figcaption>V3 · Top view</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v3-stress.jpg" alt="V3 · Static stress simulation"><figcaption>V3 · Static stress simulation</figcaption></figure></div>
       <p>I introduced double-sided recesses along the central length to create an I-beam-like section, retaining outer material to resist bending. I also reduced the ball-joint housing diameter from 2.6 to 2.4 inches and a surrounding mounting feature from 1.50 to 1.25 inches.</p>
       <p>Mass decreased from 1.60 lb to 1.36 lb. An early local probe comparison showed increased stress after material removal, highlighting the trade-off between weight savings and reinforcement.</p>
       <h3>V4: Restoring reinforcement where it matters</h3>
+<div class="iteration-visuals"><figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v4-normal.jpg" alt="V4 · Selected final geometry"><figcaption>V4 · Selected final geometry</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v4-stress.jpg" alt="V4 · Static stress simulation"><figcaption>V4 · Static stress simulation</figcaption></figure></div>
       <p>I restored material near the chassis-bushing transition while retaining selected weight-saving features from V3. I also investigated a bushing-hole fillet that produced unusually high stresses at the fixed-fixture boundary.</p>
       <p>V4 finished at 1.41 lb, matching V1. It was selected as the preferred design because it improved the reported stress, displacement, fatigue-life, and frequency results without increasing baseline mass.</p>
     </section>
@@ -119,14 +134,11 @@
     </section>
     <section class="project-section" aria-labelledby="gallery">
       <h2 id="gallery">Project Gallery</h2>
-      <div class="project-gallery">
-        <img loading="lazy" decoding="async" src="../assets/images/control-arm-fatigue-v1.png" alt="V1 baseline fatigue-life plot with the lowest predicted life near the bushing transition">
-        <img loading="lazy" decoding="async" src="../assets/images/control-arm-3.png" alt="Control arm static von Mises stress plot in SolidWorks">
-        <img loading="lazy" decoding="async" src="../assets/images/control-arm-4.png" alt="Control arm displacement study shown in SolidWorks Simulation">
-        <img loading="lazy" decoding="async" src="../assets/images/control-arm-5.png" alt="Control arm stress result with probe measurements">
-        <img loading="lazy" decoding="async" src="../assets/images/control-arm-6.png" alt="Control arm topology study screenshot from the development journal">
-      </div>
-      <p class="gallery-hint">Development screenshots include the V1 baseline fatigue plot and earlier static, displacement, and topology studies. Plot scales and study settings vary; the final comparison is reported in the results table above.</p>
+      <p>Explore each version in order, from the original geometry through the final selected design. Each labeled image is also placed beside its corresponding design discussion above.</p>
+      <div class="iteration-visuals gallery-overview"><figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v1.jpg" alt="V1 · Baseline"><figcaption>V1 · Baseline</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v2.jpg" alt="V2 · Reinforced"><figcaption>V2 · Reinforced</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v3.jpg" alt="V3 · Weight reduced"><figcaption>V3 · Weight reduced</figcaption></figure>
+<figure class="iteration-figure"><img loading="lazy" decoding="async" src="../assets/images/control-arm-v4-normal.jpg" alt="V4 · Selected design"><figcaption>V4 · Selected design</figcaption></figure></div>
     </section>
     <a class="next-project" href="robo-masters.html"><span>Explore another project</span><strong>RoboMasters Standard Robot →</strong></a>
   </main>
