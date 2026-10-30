@@ -19,6 +19,19 @@
 <style>
 .iteration-visuals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem;margin:1.1rem 0 2rem}.iteration-figure{margin:0;min-width:0;border:1px solid rgba(140,160,190,.24);border-radius:16px;overflow:hidden;background:rgba(125,145,170,.07)}.iteration-figure img{display:block;width:100%;height:220px;object-fit:contain;padding:.6rem;box-sizing:border-box;transition:transform .45s ease}.iteration-figure:hover img{transform:scale(1.035)}.iteration-figure figcaption{padding:.7rem 1rem;font-size:.87rem;line-height:1.45}.gallery-overview{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}@media(max-width:600px){.iteration-figure img{height:190px}}
 </style>
+<style>
+/* Project image viewer — does not alter gallery layout */
+main img { cursor: zoom-in; }
+.image-viewer {position:fixed;inset:0;z-index:9999;background:rgba(9,14,26,.94);display:flex;align-items:center;justify-content:center;padding:64px 22px 58px;box-sizing:border-box}
+.image-viewer[hidden]{display:none}
+.image-viewer img{max-width:100%;max-height:100%;object-fit:contain;transform:scale(var(--viewer-scale,1));transition:transform .18s ease;cursor:zoom-in;user-select:none}
+.image-viewer button{position:absolute;z-index:2;border:1px solid rgba(255,255,255,.3);background:rgba(20,30,49,.8);color:white;border-radius:12px;padding:9px 14px;font-size:22px;cursor:pointer}
+.image-viewer .viewer-close{right:18px;top:16px}
+.image-viewer .viewer-controls{position:absolute;bottom:12px;display:flex;gap:10px}
+.image-viewer .viewer-controls button{position:static}
+.image-viewer .viewer-label{position:absolute;top:22px;left:22px;right:75px;color:#fff;font:14px system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(prefers-reduced-motion:reduce){.image-viewer img{transition:none}}
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -142,5 +155,40 @@
     </section>
     <a class="next-project" href="robo-masters.html"><span>Explore another project</span><strong>RoboMasters Standard Robot →</strong></a>
   </main>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const photos = [...document.querySelectorAll('main img')].filter(img => !img.closest('a'));
+  if (!photos.length) return;
+  const viewer = document.createElement('div');
+  viewer.className = 'image-viewer';
+  viewer.hidden = true;
+  viewer.setAttribute('role','dialog');
+  viewer.setAttribute('aria-modal','true');
+  viewer.setAttribute('aria-label','Enlarged project image');
+  viewer.innerHTML = '<span class="viewer-label"></span><button class="viewer-close" aria-label="Close image viewer">×</button><img alt=""><div class="viewer-controls"><button class="viewer-out" aria-label="Zoom out">−</button><button class="viewer-reset" aria-label="Reset zoom">Reset</button><button class="viewer-in" aria-label="Zoom in">+</button></div>';
+  document.body.appendChild(viewer);
+  const full = viewer.querySelector('img');
+  const label = viewer.querySelector('.viewer-label');
+  let scale = 1, previousFocus;
+  const zoom = value => {scale=Math.max(1,Math.min(5,value));full.style.setProperty('--viewer-scale',scale);full.style.cursor=scale>1?'zoom-out':'zoom-in'};
+  const close = () => {viewer.hidden=true;document.body.style.overflow='';previousFocus?.focus()};
+  photos.forEach(img => {
+    img.tabIndex=0;
+    img.setAttribute('role','button');
+    img.setAttribute('aria-label','Enlarge image: '+(img.alt||'Project image'));
+    const open = () => {previousFocus=document.activeElement;full.src=img.currentSrc||img.src;full.alt=img.alt||'Project image';label.textContent=img.closest('figure')?.querySelector('figcaption')?.textContent||img.alt||'Project image';zoom(1);viewer.hidden=false;document.body.style.overflow='hidden';viewer.querySelector('.viewer-close').focus()};
+    img.addEventListener('click',open);
+    img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+  });
+  viewer.querySelector('.viewer-close').addEventListener('click',close);
+  viewer.querySelector('.viewer-in').addEventListener('click',()=>zoom(scale+.5));
+  viewer.querySelector('.viewer-out').addEventListener('click',()=>zoom(scale-.5));
+  viewer.querySelector('.viewer-reset').addEventListener('click',()=>zoom(1));
+  full.addEventListener('click',()=>zoom(scale===1?2:1));
+  viewer.addEventListener('click',e=>{if(e.target===viewer)close()});
+  viewer.addEventListener('wheel',e=>{e.preventDefault();zoom(scale+(e.deltaY<0?.25:-.25))},{passive:false});
+  document.addEventListener('keydown',e=>{if(viewer.hidden)return;if(e.key==='Escape')close();if(e.key==='+'||e.key==='=')zoom(scale+.5);if(e.key==='-')zoom(scale-.5);if(e.key==='Tab'){const buttons=[...viewer.querySelectorAll('button')];const i=buttons.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();buttons.at(-1).focus()}else if(!e.shiftKey&&i===buttons.length-1){e.preventDefault();buttons[0].focus()}}});
+});
+</script>
 </body>
 </html>
